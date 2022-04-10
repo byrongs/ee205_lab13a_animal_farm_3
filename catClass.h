@@ -65,32 +65,6 @@ protected: ////////////Protected Cat Members /////////////////////
     bool isCatFixed ;
     Weight weight;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
 
 
