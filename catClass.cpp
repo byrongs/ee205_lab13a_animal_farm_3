@@ -99,10 +99,6 @@ return true;
 
 
 
-
-
-
-
 ////////////// Cat name validation //////////////
 bool Cat::ValidateName(const char *newName ) {
     if( newName == nullptr ) {
@@ -130,3 +126,35 @@ bool Cat::ValidateGender( const Gender newGender) {
     return true;
 
 }
+
+bool Cat::ValidateBreed( const Breed breed) {
+    if( newBreed == UNKNOWN_BREED ) {
+        throw invalid_argument(PROGRAM_NAME ": Cat breed must be known!") ;
+    }
+    return true;
+}
+
+bool Cat:: ValidateWeight( const Weight newWeight ) {
+    if( newWeight <= 0) {
+       throw invalid_argument(PROGRAM_NAME ": The weight must be greater than 0") ;
+    }
+    return true;
+}
+
+void Cat::fixcat() {
+    Cat::isCatFixed = true;
+}
+
+void Cat::setWeight(Weight newWeight) { /// Valid due to constant weight change ///
+    validateWeight( newWeight ) ;
+    Cat::weight = newWeight;
+}
+
+void Cat::setGender(Gender newGender) { /// Not valid unless the previous value is UNKNOWN_GENDER///
+    if( gender != UNKNOWN_GENDER ) {
+        throw logic_error(PROGRAM_NAME ": Cannot change a gender that's already set ") ;
+    }
+    ValidateGender( newGender );
+    Cat::gender == newGender ;
+}
+
