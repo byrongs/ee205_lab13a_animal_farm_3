@@ -80,7 +80,7 @@ bool Cat::print() const noexcept {
 
 ////Creating a validation method////
 
-bool Cat::validation() const noexcept {
+bool Cat::validation() {
 try {
     validateName( name ) ;
     validateGender( gender ) ;

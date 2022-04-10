@@ -15,8 +15,8 @@
 
 #include <limits.h>
 
-#define PROGRAM_TITLE "Animal Farm 1"
-#define PROGRAM_NAME  "animalfarm1"
+#define PROGRAM_TITLE "Animal Farm 2"
+#define PROGRAM_NAME  "animalfarm2"
 
 #define MAX_CATS (128)
 
