@@ -21,12 +21,18 @@
 using namespace std ;
 
 bool deleteCat( Cat* deletePointedCat ) {
-    assert( deletePointedCat != nullptr ) ;
-    assert( validateCatDatabase() ) ;
+    assert(deletePointedCat != nullptr);
+    assert(validateDatabase() );
+
+
+    if( deletePointedCat == catDataBaseHeadPointer ) {
+        catDataBaseHeadPointer = catDataBaseHeadPointer->next ;
+        delete deletePointedCat ;
+        numCats--;
     }
 
-    Cat *findCat = catDataBaseHeadPointer;
-    while (findCat != nullptr) {
+    Cat *findCat = catDataBaseHeadPointer ;
+    while( findCat != nullptr ) {
         if (findCat->next == deletePointedCat) {
             findCat->next = deletePointedCat->next;
             delete deletePointedCat;
@@ -44,6 +50,8 @@ bool deleteCat( Cat* deletePointedCat ) {
 
     throw invalid_argument(PROGRAM_NAME ": Unable to find cat ");
 }
+
+
 bool deleteAllCats() {
     while(catDatabaseHeadPointer != nullptr ) {
         deleteCat(catDatabaseHeadPointer);

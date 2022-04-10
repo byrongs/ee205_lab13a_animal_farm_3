@@ -9,59 +9,51 @@
 /// @date   20_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "reportCats.h"
+#
 
-#include <stdio.h>
-#include <string.h>  /// For strncmp
-#include <assert.h>
+#include <cstring>
+#include <stdexcept>
+#include <cassert>
+#include <iostream>
+
+
 #include "reportCats.h"
 #include "catDatabase.h"
+#include "catClass.h"
+#include "deleteCats.h"
 
-void printCat( const NumCats index ) {
-    if( !isIndexValid( index ) ) {
-        fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
-        return;
+using namespace std ;
+
+
+
+bool printAllCats() {
+    NumCats numCats = 0 ;
+
+    assert( validateDatabase() ) ;
+
+    for(Cat* findCat = catDatabaseHeadPointer ; findCat != nullptr ; findCat = findCat->next ) {
+        findCat->print() ;
+        numCats++ ;
     }
 
-    printf( "cat index = [%lu]  name=[%s]  gender=[%s]  breed=[%s]  isFixed=[%d]  weight=[%f] color1=[%s] color2=[%s] license=[%lld]\n"
-            ,index
-            ,cats[index].name
-            ,genderName( cats[index].gender )
-            ,breedName( cats[index].breed )
-            ,cats[index].isFixed
-            ,cats[index].weight
-            ,colorName( cats[index].collarColor1)
-            ,colorName( cats[index].collarColor2)
-            ,cats[index].license
-    ) ;       }
-
-void printAllCats() {
 #ifdef DEBUG
-    printf( "numCats = [%lu]\n", numCats );
+    cout << "numCats = [" << numCats << "]" << endl;
+
 #endif
 
-    for( NumCats i = 0 ; i < numCats ; i++ ) {
-        printCat( i );
-    }
+    return true;
 }
 
 
-NumCats findCat( const char* name ) {
-    if( name == NULL ) {
-        return BAD_CAT ;
-    }
+Cat* findCatName( const char* name ) {
+    assert( Cat().validateName( name ) ) ;
 
-
-    for( NumCats i = 0 ; i < numCats ; i++ ) {
-        if( strncmp( name, cats[i].name, MAX_CAT_NAME ) == 0 ) {  // Found a match!
-            return i;
+    for(Cat* findCat = catDatabaseHeadPointer ; findCat != nullptr ; findCat->next ) {
+        if( strcmp( name, findCat->getName() == 0 ) {
+            return findCat ;
         }
     }
-
-    return BAD_CAT ;
 }
-
-
 
 
 const char* genderName( const enum Gender gender ) {
@@ -71,8 +63,7 @@ const char* genderName( const enum Gender gender ) {
         case FEMALE: return "FEMALE";
     }
 
-    assert( false ) ;
-    return NULL;
+    throw logic_error(PROGRAM_NAME ": Gender name is not mapped to any string values ") ;
 }
 
 
@@ -86,8 +77,7 @@ const char* breedName( const enum Breed breed ) {
         case SPHYNX: return "SPHYNX" ;
         case SIAMESE: return "SIAMESE" ;
     }
-    assert( false ) ;
-    return NULL;
+    throw logic_error(PROGRAM_NAME ": Breed name is not mapped to any string values ") ;
 }
 
 
@@ -100,6 +90,5 @@ const char* colorName ( const enum Color color ) {
         case GREEN: return "GREEN" ;
         case PINK: return "PINK" ;
     }
-    assert( false ) ;
-    return NULL;
+    throw logic_error(PROGRAM_NAME ": Color name is not mapped to any string values ") ;
 }
