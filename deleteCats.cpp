@@ -3,50 +3,58 @@
 /// @brief  Project - EE 205 - Spr 2022
 ///
 /// @file deleteCats.cpp
-/// @version 1.0
+/// @version 2.0
 ///
 /// @author @Byron Soriano <@byrongs@hawaii.edu>
 /// @date   20_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "deleteCats.h"
-#include <stdio.h>
-#include <stdbool.h>
+
+#include <cassert>
+#include <iostream>
+#include <stdexcept>
 
 #include "deleteCats.h"
 #include "catDatabase.h"
+#include "catClass.h"
 
-bool deleteCat( const size_t index ) {
-    if( !isIndexValid( index ) ) {
-        fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
-        return false;
+using namespace std ;
+
+bool deleteCat( Cat* deletePointedCat ) {
+    assert( deletePointedCat != nullptr ) ;
+    assert( validateCatDatabase() ) ;
     }
 
-    if( numCats == 0 ) {
-        return true;
+    Cat *findCat = catDataBaseHeadPointer;
+    while (findCat != nullptr) {
+        if (findCat->next == deletePointedCat) {
+            findCat->next = deletePointedCat->next;
+            delete deletePointedCat;
+            numCats--;
+
+            assert(validateDatabase());
+
+            return true;
+
+        }
+        findCat = findCat->next;
     }
 
-    swapCat( index, numCats-1 ) ;
+    assert(validateDatabase());
 
-    wipeCat( numCats-1);
-
-    numCats -= 1;
-
-#ifdef DEBUG
-    printf( "%s: %s: Cat [%lu] has been deleted.  There are [%lu] in the database.\n", PROGRAM_NAME, __FUNCTION__, index, numCats );
-#endif
-    return true;
+    throw invalid_argument(PROGRAM_NAME ": Unable to find cat ");
 }
-
 bool deleteAllCats() {
-    while( numCats != 0 ) {
-        deleteCat( 0 );
+    while(catDatabaseHeadPointer != nullptr ) {
+        deleteCat(catDatabaseHeadPointer);
     }
 
+
+
 #ifdef DEBUG
-    printf(  "%s: %s: All cats have been deleted\n", PROGRAM_NAME, __FUNCTION__ );
+    cout << PROGRAM_NAME << ":All cats have been deleted" << endl ;
 #endif
 
-    return true;
+    return true ;
 
 }

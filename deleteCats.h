@@ -3,7 +3,7 @@
 /// @brief  Project - EE 205 - Spr 2022
 ///
 /// @file deleteCats.h
-/// @version 1.0
+/// @version 2.0
 ///
 /// @author @Byron Soriano <@byrongs@hawaii.edu>
 /// @date   20_Mar_2022
@@ -13,5 +13,8 @@
 
 #include <cstdlib>
 
+#include "catClass.h"
+
 extern bool deleteAllCats() ;
-extern bool deleteCat( const size_t index );
+
+extern bool deleteCat( Cat* deletePointedCat ); // Deletes the pointed cat
