@@ -19,11 +19,11 @@
 enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
 enum Breed { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX, SIAMESE };
 enum Color { BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
-
+/////////////////////////////////////////TYPEDEFS/////////////////////////////////////////////////////////////////////
 typedef float Weight ; //Typedef declaration of float->weight//
 
 typedef unsigned long NumCats; //Typedef declaration of unsigned long ->NumCats
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct Catinfo {
     char name[MAX_CAT_NAME] ;
     enum Gender gender ;
