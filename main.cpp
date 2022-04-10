@@ -9,9 +9,11 @@
 /// @date   20_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
+#include <cstdlib>
+#include <cassert>
+#include <cstring>
+#include <iostream>
+#include <exception>
 
 #include "config.h"
 #include "catDatabase.h"
@@ -20,10 +22,16 @@
 #include "updateCats.h"
 #include "deleteCats.h"
 
-int main() {
-    printf( "Starting %s\n", PROGRAM_TITLE );
 
-    /// Format a line for printing the members of a class
+using namespace std ;
+
+
+int main() {
+    cout << "Starting" << PROGRAM_TITLE << endl ;
+
+    initializeDatabase() ;
+
+
 #define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
 /// @returns true if everything worked correctly. false if something goes
 /// wrong
@@ -41,7 +49,7 @@ int main() {
         return true ;
     }
 
-    printf( "Done with %s\n", PROGRAM_TITLE );
+    cout << "Done with" <<  PROGRAM_TITLE << endl ;
 
     return( EXIT_SUCCESS );
 }
