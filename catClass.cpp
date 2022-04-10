@@ -16,7 +16,7 @@
 
 #include "catClass.h"
 #include "reportCats.h"
-
+#include "CatDatabase.h"
 using namespace std ;
 
 ////Zeroing out Cat() members////
