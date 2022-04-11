@@ -17,6 +17,7 @@
 #include "catClass.h"
 #include "reportCats.h"
 #include "CatDatabase.h"
+
 using namespace std ;
 
 ////Zeroing out Cat() members////
@@ -30,7 +31,19 @@ void Cat::destructMemberData() {
 }
 
 Cat::Cat() {
-destructMemberData() ;
+    destructMemberData() ;
+}
+
+
+
+Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cosnt Weight newWeight ) : Cat() {
+    setName( newName ) ;
+    setGender( newGender ) ;
+    setBreed( newBreed ) ;
+    setWeight( newWeight ) ;
+
+    assert(validation() ) ;
+
 }
 
 const char *Cat::getName() const noexcept {
@@ -64,7 +77,7 @@ return weight;
 /// @returns true if everything worked correctly. false if something goes
 /// wrong
 bool Cat::print() const noexcept {
-    assert( validate() ) ;
+    assert( validation() ) ;
     cout << setw(80) << setfill( '=' ) << "" << endl ;
     cout << setfill( ' ' ) ;
     cout << left ;
@@ -80,12 +93,12 @@ bool Cat::print() const noexcept {
 
 ////Creating a validation method////
 
-bool Cat::validation() {
-try {
-    validateName( name ) ;
-    validateGender( gender ) ;
-    validateBreed( breed ) ;
-    validateWeight( weight ) ;
+bool Cat::validation()const noexcept {
+    try {
+        validateName( name ) ;
+        validateGender( gender ) ;
+        validateBreed( breed ) ;
+        validateWeight( weight ) ;
 }
     catch (exception const& e) {
     cout << "Valid" << endl ;
@@ -100,7 +113,7 @@ return true;
 
 
 ////////////// Cat name validation //////////////
-bool Cat::ValidateName(const char *newName ) {
+bool Cat::validateName(const char *newName ) {
     if( newName == nullptr ) {
         throw invalid_argument(PROGRAM_NAME ": Name cannot be Null");
     }
@@ -118,7 +131,7 @@ bool Cat::ValidateName(const char *newName ) {
 
 
 ////////// Cat Gender Validation /////////////
-bool Cat::ValidateGender( const Gender newGender) {
+bool Cat::validateGender( const Gender newGender) {
     if( newGender == UNKNOWN_GENDER ) {
         throw invalid_argument(PROGRAM_NAME ": The gender must be known") ;
     }
@@ -127,14 +140,14 @@ bool Cat::ValidateGender( const Gender newGender) {
 
 }
 
-bool Cat::ValidateBreed( const Breed breed) {
+bool Cat::validateBreed( const Breed breed) {
     if( newBreed == UNKNOWN_BREED ) {
         throw invalid_argument(PROGRAM_NAME ": Cat breed must be known!") ;
     }
     return true;
 }
 
-bool Cat:: ValidateWeight( const Weight newWeight ) {
+bool Cat::validateWeight( const Weight newWeight ) {
     if( newWeight <= 0) {
        throw invalid_argument(PROGRAM_NAME ": The weight must be greater than 0") ;
     }
@@ -150,6 +163,8 @@ void Cat::setWeight(Weight newWeight) { /// Valid due to constant weight change 
     Cat::weight = newWeight;
 }
 
+
+
 void Cat::setGender(Gender newGender) { /// Not valid unless the previous value is UNKNOWN_GENDER///
     if( gender != UNKNOWN_GENDER ) {
         throw logic_error(PROGRAM_NAME ": Cannot change a gender that's already set ") ;
@@ -157,4 +172,9 @@ void Cat::setGender(Gender newGender) { /// Not valid unless the previous value 
     ValidateGender( newGender );
     Cat::gender == newGender ;
 }
+
+void Cat::setBreed(Breed newBreed) {
+
+}
+
 

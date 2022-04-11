@@ -7,7 +7,7 @@
 ///
 /// @author @Byron Soriano <@byrongs@hawaii.edu>
 /// @date   7_April_2022
-///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -16,32 +16,30 @@
 #include "catClass.h"
 
 
-///////////////////////////////////////// TYPEDEFS /////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// TYPEDEFS //////////////////////////////////////////////////////////////////
 typedef float Weight ; //Typedef declaration of float->weight//
 
-typedef unsigned long NumCats; //Typedef declaration of unsigned long ->NumCats
+typedef size_t NumCats; //Typedef declaration of size_t NumCats
 
-typedef enum Gender; //Typedef declaration of gender
+typedef float Weight ; //Typedef declaration of weight
 
-typedef enum Breed ;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Gender gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
+enum Breed {UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
 
-Breed breed {UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
+enum Gender {UNKNOWN_GENDER=0, MALE, FEMALE} ;
+
+const Weight UNKNOWN_WEIGHT = -1;
 
 
 extern Cat* catDataBaseHeadPointer ;
 
 
-extern NumCats numCats ;  /// This points to the next available cat we can add to database
-
+extern NumCats numCats ;
 
 extern void initializeDatabase() ;
 
-
-extern bool isCatInDatabase( const Cat* aCat ) ;
-
+extern bool isCatInDatabase( const Cat* presentCat ) ;
 
 extern bool validateDatabase();
 

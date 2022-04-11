@@ -53,6 +53,7 @@ Cat* findCatName( const char* name ) {
             return findCat ;
         }
     }
+    return nullptr ;
 }
 
 
@@ -72,16 +73,15 @@ const char* breedName( const enum Breed breed ) {
         case UNKNOWN_BREED: return "UNKNOWN" ;
         case MAINE_COON: return "MAINE COON" ;
         case MANX: return "MANX" ;
-        case SHORTHAIR: return "SHORTHAIR" ;
+        case Shorthair: return "Shorthair" ;
         case PERSIAN: return "PERSIAN" ;
         case SPHYNX: return "SPHYNX" ;
-        case SIAMESE: return "SIAMESE" ;
     }
     throw logic_error(PROGRAM_NAME ": Breed name is not mapped to any string values ") ;
 }
 
 
-const char* colorName ( const enum Color color ) {
+const char* colorName( const enum Color color ) {
     switch( color ) {
         case BLACK: return "BLACK" ;
         case WHITE: return "WHITE" ;

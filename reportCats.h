@@ -24,4 +24,4 @@ extern const char* breedName( enum Breed breed ) ; // Returns cat's breed
 
 extern const char* colorName( enum Color color ) ; // Returns cat's collar color
 
-
+extern NumCats numCats;
