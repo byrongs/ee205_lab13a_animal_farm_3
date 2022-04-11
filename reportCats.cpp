@@ -31,7 +31,7 @@ bool printAllCats() {
 
     assert( validateDatabase() ) ;
 
-    for(Cat* findCat = catDatabaseHeadPointer ; findCat != nullptr ; findCat = findCat->next ) {
+    for(Cat* findCat = catDataBaseHeadPointer ; findCat != nullptr ; findCat = findCat->next ) {
         findCat->print() ;
         numCats++ ;
     }
@@ -48,7 +48,7 @@ bool printAllCats() {
 Cat* findCatName( const char* name ) {
     assert( Cat().validateName( name ) ) ;
 
-    for(Cat* findCat = catDatabaseHeadPointer ; findCat != nullptr ; findCat->next ) {
+    for(Cat* findCat = catDataBaseHeadPointer ; findCat != nullptr ; findCat->next ) {
         if( strcmp( name, findCat->getName() == 0 ) {
             return findCat ;
         }
@@ -73,7 +73,7 @@ const char* breedName( const enum Breed breed ) {
         case UNKNOWN_BREED: return "UNKNOWN" ;
         case MAINE_COON: return "MAINE COON" ;
         case MANX: return "MANX" ;
-        case Shorthair: return "Shorthair" ;
+        case SHORTHAIR: return "Shorthair" ;
         case PERSIAN: return "PERSIAN" ;
         case SPHYNX: return "SPHYNX" ;
     }
@@ -81,14 +81,3 @@ const char* breedName( const enum Breed breed ) {
 }
 
 
-const char* colorName( const enum Color color ) {
-    switch( color ) {
-        case BLACK: return "BLACK" ;
-        case WHITE: return "WHITE" ;
-        case RED: return "RED" ;
-        case BLUE: return "BLUE" ;
-        case GREEN: return "GREEN" ;
-        case PINK: return "PINK" ;
-    }
-    throw logic_error(PROGRAM_NAME ": Color name is not mapped to any string values ") ;
-}

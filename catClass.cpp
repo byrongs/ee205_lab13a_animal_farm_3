@@ -36,7 +36,7 @@ Cat::Cat() {
 
 
 
-Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cosnt Weight newWeight ) : Cat() {
+Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight ) : Cat() {
     setName( newName ) ;
     setGender( newGender ) ;
     setBreed( newBreed ) ;
@@ -140,7 +140,7 @@ bool Cat::validateGender( const Gender newGender) {
 
 }
 
-bool Cat::validateBreed( const Breed breed) {
+bool Cat::validateBreed( const Breed newBreed) {
     if( newBreed == UNKNOWN_BREED ) {
         throw invalid_argument(PROGRAM_NAME ": Cat breed must be known!") ;
     }
@@ -154,7 +154,7 @@ bool Cat::validateWeight( const Weight newWeight ) {
     return true;
 }
 
-void Cat::fixcat() {
+void Cat::fixCat() noexcept {
     Cat::isCatFixed = true;
 }
 
@@ -169,7 +169,7 @@ void Cat::setGender(Gender newGender) { /// Not valid unless the previous value 
     if( gender != UNKNOWN_GENDER ) {
         throw logic_error(PROGRAM_NAME ": Cannot change a gender that's already set ") ;
     }
-    ValidateGender( newGender );
+    validateGender( newGender );
     Cat::gender == newGender ;
 }
 

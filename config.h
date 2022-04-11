@@ -16,4 +16,6 @@
 #define PROGRAM_NAME  "animalfarm2"
 //////////////////////////////////////////////////////////////////////////////
 
+typedef float Weight ; //Typedef declaration of weight
+const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown
 

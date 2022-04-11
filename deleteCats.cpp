@@ -53,8 +53,8 @@ bool deleteCat( Cat* deletePointedCat ) {
 
 
 bool deleteAllCats() {
-    while(catDatabaseHeadPointer != nullptr ) {
-        deleteCat(catDatabaseHeadPointer);
+    while(catDataBaseHeadPointer != nullptr ) {
+        deleteCat(catDataBaseHeadPointer);
     }
 
 

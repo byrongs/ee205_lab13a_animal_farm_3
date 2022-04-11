@@ -36,12 +36,17 @@ private:
     void destructMemberData();
 
 public:  /////////////// Constructors ///////////////////////////
-    Cat();
+    Cat(); //creates cat with default values
 
-    Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight);
+    Cat(
+            const char *newName,
+            const Gender newGender,
+            const Breed newBreed,
+            const Weight newWeight);
 
     virtual ~Cat();
 
+       ////////////////// Public Setters and Getters ///////////
 public:
     const char *getName() const noexcept;
 
@@ -53,7 +58,7 @@ public:
 
     bool isFixed() const noexcept;
 
-    void fixCat() const noexcept;
+    void fixCat() noexcept; // Will set isCatFixed to be true //
 
     Weight getWeight() const noexcept;
 
@@ -75,7 +80,7 @@ public:
 
     static bool validateGender(const Gender newGender);
 
-    static bool vaidateBreed(const Breed newBreed);
+    static bool validateBreed(const Breed newBreed);
 
     static bool validateWeight(const Weight newWeight);
 };
