@@ -16,21 +16,6 @@
 #include "catClass.h"
 
 
-///////////////////////////////////////// TYPEDEFS //////////////////////////////////////////////////////////////////
-typedef float Weight ; //Typedef declaration of float->weight//
-
-typedef size_t NumCats; //Typedef declaration of size_t NumCats
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-enum Breed {UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
-
-enum Gender {UNKNOWN_GENDER=0, MALE, FEMALE} ;
-
-
-
 extern Cat* catDataBaseHeadPointer ;
 
 

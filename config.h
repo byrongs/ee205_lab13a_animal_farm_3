@@ -16,6 +16,18 @@
 #define PROGRAM_NAME  "animalfarm2"
 //////////////////////////////////////////////////////////////////////////////
 
-typedef float Weight ; //Typedef declaration of weight
-const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown
 
+enum Breed {UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
+
+enum Gender {UNKNOWN_GENDER=0, MALE, FEMALE} ;
+
+
+///////////////////////////////////////// TYPEDEFS //////////////////////////////////////////////////////////////////
+typedef float Weight ; //Typedef declaration of float->weight//
+
+typedef size_t NumCats; //Typedef declaration of size_t NumCats
+
+typedef float Weight ; //Typedef declaration of weight
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown
