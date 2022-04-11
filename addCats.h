@@ -12,5 +12,7 @@
 #pragma once
 
 #include "catDatabase.h"
+#include "catClass.h"
 
+/////////Adding new cat in database/////////////
 extern bool addCat(Cat* newCat ) ;

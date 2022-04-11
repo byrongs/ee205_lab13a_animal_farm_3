@@ -21,7 +21,7 @@
 
 using namespace std;
 
-
+//////////////Validating unique new cat will be added///////////////
 bool addCat(Cat* newCat ) {
     assert( newCat != nullptr );
     newCat->validation() ;
