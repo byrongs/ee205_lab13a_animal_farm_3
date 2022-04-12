@@ -10,13 +10,18 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-#include "catDatabase.h"
-extern void   printCat( const NumCats index ) ;
-extern void   printAllCats() ;
-extern NumCats findCat( const char* name ) ;  /// @returns the index or BAD_CAT
 
-extern const char* genderName( const enum Gender gender ) ;
+#include "config.h"
+#include "catClass.h"
 
-extern const char* breedName( const enum Breed breed ) ;
+/// Print all present cats in the database //
+extern bool   printAllCats() ;
 
-extern const char* colorName (const enum Color color ) ;
+
+extern Cat* findCatByName( const char* name ) ;
+
+// Returns the string for the cat's gender //
+extern const char* genderName( enum Gender gender ) ;
+
+// Returns the string for the cat's breed //
+extern const char* breedName( enum Breed breed ) ;

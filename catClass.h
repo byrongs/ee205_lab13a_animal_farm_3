@@ -8,63 +8,75 @@
 /// @author @Byron Soriano <@byrongs@hawaii.edu>
 /// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 
 #include "config.h"
 
-// Maximum characters for a cat's name
-#define MAX_CAT_NAME (50)
 
+#define MAX_CAT_NAME (50) /// Max chars in a cat's name
 
+//////////////////// The Cat Class ////////////////////////////////////////
 class Cat {
 
-public:
-    Cat* next ;
 
-public:
-    Cat() ;
-    ////////////////////////// Creates cat with required fields ///////////////////////////////////////
+public:  // Public Member Variables //
+    Cat*        next ;       //Cat pointer for linked list
+
+
+
+public:  //////////////////////////// Constructors /////////////////////////////
+    Cat();
+
+
+
     Cat( const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight );
 
-public: // Public Cat Constructor //
-    const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight );
 
-public: // Public Getters and Setters //
-    const char *getName() const noexcept; //Cat name getter and setter
-    void setName( const char* newName );
+    virtual ~Cat();
 
-    Gender getGender() const noexcept;// Cat gender getter
+public:  ///////////// Public Getters & Setters //////////////////////////
+    const char *getName() const noexcept ; ///< Get the Cat's name
+    void setName( const char* newName );   ///< Set the Cat's name.  The name
 
-    Breed getBreed() const noexcept; // Cat breed getter
 
-    bool isFixed() const noexcept; //return true if cat is fixed
+    Gender getGender() const noexcept ;
+    Breed getBreed() const noexcept ;
+    bool isFixed() const noexcept ;
+    void fixCat() noexcept ;
+    Weight getWeight() const noexcept ;
+    void setWeight(Weight newWeight) ;
 
-    Weight getWeight() const noexcept; //Cat weight getter
-    void setWeight(Weight newWeight); //Cat weight setter due to constant weight change
-
-public: // Public Methods //
-    bool print() const noexcept;
-    bool validate() const noexcept;
-
-public: // Static Public Methods //
+public: //////////////// Static Public Methods ////////////////////////
 
     static bool validateName( const char* newName ) ;
-    static bool validateGender( const Gender newGender );
-    static bool validateBreed(const Breed newBreed );
-    static bool validateWeight(const Weight newWeight );
+    static bool validateGender( const Gender newGender ) ;
+    static bool validateBreed( const Breed newBreed ) ;
+    static bool validateWeight( const Weight newWeight ) ;
 
-protected: // Protected Getters and Setters //
-    void setGender( Gender, newGender ); //Set cat gender
-    void setGender( Breed, newBreed ); //Set cat Breed
+public:  /////////////////////////// Public Methods ////////////////////////////
+    bool print() const noexcept ;
+    bool validation() const noexcept;
 
-protected: ////////////Protected Cat Members /////////////////////
-    char name[MAX_CAT_NAME] ;
+
+
+private:  /////////////////////////// Private Methods //////////////////////////
+    void destructMemberData();
+
+
+
+
+//////////////// Protected Cat Members ///////////////////////
+protected:
+    char        name[MAX_CAT_NAME] ;
     enum Gender gender ;
-    enum Breed breed ;
-    bool isCatFixed ;
-    Weight weight;
+    enum Breed  breed ;
+    bool        isCatFixed ;
+    Weight      weight ;
+
+protected: ////////////////////// Protected Methods (Will be Public for now) ///////////////////////////
+public:
+    void setGender(Gender newGender);
+    void setBreed(Breed newBreed);
 
 };
-
 

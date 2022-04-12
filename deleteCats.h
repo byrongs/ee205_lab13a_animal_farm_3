@@ -8,10 +8,12 @@
 /// @author @Byron Soriano <@byrongs@hawaii.edu>
 /// @date   20_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 
-#include <cstdlib>
+#include "catClass.h"
 
+/// Delete all of the cats in the database.
 extern bool deleteAllCats() ;
-extern bool deleteCat( const size_t index );
+
+/// Delete a cat in the database.
+extern bool deleteCat( Cat* deleteThisCat ) ;

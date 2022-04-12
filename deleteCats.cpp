@@ -9,44 +9,69 @@
 /// @date   20_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "deleteCats.h"
-#include <stdio.h>
-#include <stdbool.h>
+#include <cassert>
+#include <iostream>
+#include <stdexcept>
 
+#include "config.h"
 #include "deleteCats.h"
 #include "catDatabase.h"
+#include "catClass.h"
 
-bool deleteCat( const size_t index ) {
-    if( !isIndexValid( index ) ) {
-        fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
-        return false;
+using namespace std ;
+
+
+bool deleteCat( Cat* deleteThisCat ) {
+    assert( deleteThisCat != nullptr ) ;
+
+    assert( validateDatabase() ) ;
+
+
+    if( deleteThisCat == headPointer ) {
+        headPointer = headPointer->next ;
+        delete deleteThisCat ;
+        numCats--;
+
+        assert( validateDatabase() ) ;
+        return true ;
     }
 
-    if( numCats == 0 ) {
-        return true;
+    // Finds specific cat to delete in linked list //
+    Cat* findCat = headPointer ;
+    while( findCat != nullptr ) {
+        if( findCat->next == deleteThisCat ) {
+            findCat->next = deleteThisCat->next ;
+            delete deleteThisCat ;
+            numCats--;
+
+            assert( validateDatabase() ) ;
+
+            return true ;
+        }
+        findCat = findCat->next ;
     }
 
-    swapCat( index, numCats-1 ) ;
+    assert( validateDatabase() ) ;
 
-    wipeCat( numCats-1);
-
-    numCats -= 1;
-
-#ifdef DEBUG
-    printf( "%s: %s: Cat [%lu] has been deleted.  There are [%lu] in the database.\n", PROGRAM_NAME, __FUNCTION__, index, numCats );
-#endif
-    return true;
+    throw invalid_argument( PROGRAM_NAME ": Unable to delete cat.  Not in database" );
 }
 
+
+/// @returns true if the cats were successfully deleted.
+///          false if something bad happened
 bool deleteAllCats() {
-    while( numCats != 0 ) {
-        deleteCat( 0 );
+    // Keep deleting cats until there are no more cats...
+    while(headPointer != nullptr ) {
+        deleteCat(headPointer ) ;
     }
 
+
+
 #ifdef DEBUG
-    printf(  "%s: %s: All cats have been deleted\n", PROGRAM_NAME, __FUNCTION__ );
+    cout << PROGRAM_NAME << ": All cats have been deleted" << endl ;
 #endif
 
-    return true;
-
+    return true ;
 }
+
+

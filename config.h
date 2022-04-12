@@ -11,13 +11,22 @@
 
 #pragma once
 
-
-
-#include <limits.h>
-
+/////////////////////////Definitions /////////////////////////
 #define PROGRAM_TITLE "Animal Farm 2"
-#define PROGRAM_NAME  "animalfarm2"
 
-#define MAX_CATS (128)
 
-#define BAD_CAT UINT_MAX
+#define PROGRAM_NAME  "animal_farm_2"
+
+////////////////////////////////////// ENUMS ///////////////////////////////////////////////////
+enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
+
+enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
+
+enum Color  { UNKNOWN_COLOR=-1, BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
+
+//////////////////////////////// Typedefs /////////////////////////////////////////////////////
+typedef float Weight ;
+
+typedef int NumCats;
+
+const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown

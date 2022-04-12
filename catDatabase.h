@@ -11,30 +11,22 @@
 
 #pragma once
 
-#include <cstddef>
+#include <cstddef>   // For the size_t datatype
 
 #include "catClass.h"
+#include "config.h"
 
 
-/////////////////////////////////////////TYPEDEFS/////////////////////////////////////////////////////////////////////
-typedef float Weight ; //Typedef declaration of float->weight//
-
-typedef unsigned long NumCats; //Typedef declaration of unsigned long ->NumCats
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extern Cat* headPointer ; // Headpointer
 
 
-extern Cat* catDataBaseHeadPointer ;
+extern NumCats numCats ;
 
-
-extern NumCats numCats ;  /// This points to the next available cat we can add to database
-
-
+/// Initializes the cat database
 extern void initializeDatabase() ;
 
 
-extern bool isCatInDatabase( const Cat* aCat ) ;
+extern bool isCatInDatabase( const Cat* presentCat ) ;
 
-
-extern bool validateDatabase();
-
-
+/// Verify that the database is healthy
+extern bool validateDatabase() ;
