@@ -13,13 +13,9 @@
 
 #include "catDatabase.h"
 
-extern unsigned int addCat( const char* name
-        ,const enum Gender gender
-        ,const enum Breed breed
-        ,const bool isFixed
-        ,const Weight weight
-        ,const enum Color collarColor1
-        ,const enum Color collarColor2
-        ,const unsigned long long license
-) ;
+#pragma once
 
+#include "catClass.h"
+
+/// Inserts a new cat in the beginning of the database ///
+extern bool addCat( Cat* newCat ) ;
