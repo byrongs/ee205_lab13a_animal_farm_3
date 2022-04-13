@@ -31,6 +31,8 @@ using namespace std ;
 /// Tests invalid name
 #define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
 
+/// Tests invalid weight
+#define ILLEGAL_WEIGHT "-120"
 
 //////////////////////////// Animal Farm 2 /////////////////////////////////////////////////////////
 int main() {
@@ -49,7 +51,7 @@ int main() {
       assert(testCat.isFixed() == false);
       assert(testCat.getWeight() == UNKNOWN_WEIGHT);
       assert(!testCat.isFixed());
-      assert(!testCat.validate());  // The default cat is invalid
+      assert(!testCat.validation());  // The default cat is invalid
 
       // Test for NULL name
       try {
@@ -90,9 +92,9 @@ int main() {
       testCat.fixCat();
       assert(testCat.isFixed());
 
-      // Test for Weight <= 0
+      // Test for Illegal cat weight //
       try {
-         testCat.setWeight(0);
+         testCat.setWeight(ILLEGAL_WEIGHT);
          assert(false); // We should never get here
       } catch (exception const &e) {}
 
@@ -132,7 +134,7 @@ int main() {
       // Test deleting a cat...
       assert(deleteCat(bella) == true);
       try {
-         deleteCat(bella); // Verify that Bella's not there
+         deleteCat(bella); // To verify that Bella's not there
       } catch (exception const &e) {}
 
       bella = nullptr;
