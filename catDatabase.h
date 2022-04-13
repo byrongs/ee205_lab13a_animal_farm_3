@@ -22,11 +22,11 @@ extern Cat* headPointer ; // Headpointer
 
 extern NumCats numCats ;
 
-/// Initializes the cat database
+/// Initializes the database for new data ///
 extern void initializeDatabase() ;
 
-
+/// Scans for if cat is in the database
 extern bool isCatInDatabase( const Cat* presentCat ) ;
 
-/// Verify that the database is healthy
+/// Verifies that the database is valid ///
 extern bool validateDatabase() ;

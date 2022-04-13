@@ -77,7 +77,7 @@ extern bool validateDatabase() {
         catCount++ ;
     }
 
-    if( catCount != numCats ) { // If the cat attendance was off //
+    if( catCount != numCats ) { /// If the cat attendance was off ///
         cout << PROGRAM_NAME << ": The number of cats in attendance " << numCats
              << " does not equal " << catCount << endl ;
         return false ;

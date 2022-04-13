@@ -97,8 +97,7 @@ Weight Cat::getWeight() const noexcept {
 /// Format a line for printing the members of a class (From pdf) ///
 #define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
 
-/// @returns true if everything worked correctly.  false if something goes
-///          wrong
+/// @returns true if everything worked correctly ///
 bool Cat::print() const noexcept {
     assert( validation() ) ;
 
@@ -112,7 +111,7 @@ bool Cat::print() const noexcept {
     FORMAT_LINE( "Cat", "isFixed" )      << isFixed()   << endl ;
     FORMAT_LINE( "Cat", "weight" )       << getWeight() << endl ;
 
-    FORMAT_LINE( "Cat", "color" )        << getColor()  << endl ;
+    FORMAT_LINE( "Cat", "color" )        << colorName( getColor() )  << endl ;
 
     return true ;
 }

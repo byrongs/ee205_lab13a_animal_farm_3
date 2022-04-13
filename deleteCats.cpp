@@ -20,7 +20,7 @@
 
 using namespace std ;
 
-
+////// Deletes cat /////////
 bool deleteCat( Cat* deleteThisCat ) {
     assert( deleteThisCat != nullptr ) ;
 
@@ -57,10 +57,9 @@ bool deleteCat( Cat* deleteThisCat ) {
 }
 
 
-/// @returns true if the cats were successfully deleted.
-///          false if something bad happened
+
 bool deleteAllCats() {
-    // Keep deleting cats until there are no more cats...
+    // Will keep deleting cats until there are no more cats...
     while(headPointer != nullptr ) {
         deleteCat(headPointer ) ;
     }
