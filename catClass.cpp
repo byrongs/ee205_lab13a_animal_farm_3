@@ -27,7 +27,6 @@ Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cons
     setGender( newGender ) ;
     setBreed( newBreed ) ;
     setWeight( newWeight ) ;
-
     setColor( newColor ) ;
 
     assert( validation() ) ;
@@ -40,24 +39,18 @@ void Cat::destructMemberData()  {
     breed = UNKNOWN_BREED ;
     isCatFixed = false ;
     weight = UNKNOWN_WEIGHT ;
-
     color = UNKNOWN_COLOR ;
 
     next = nullptr ;
 }
 
 Cat::Cat() {
-    destructMemberData();
+    destructMemberData(); // Calling the destructor //
 }
 
 
 
-
-
-
-
-
-////// Virtual function ////////
+////// Virtual function //////////////////////////////////////////////////
 Cat::~Cat() {
     destructMemberData() ;
 }
@@ -85,7 +78,7 @@ Breed Cat::getBreed() const noexcept {
     return breed;
 }
 
-////////////// Cat Collar Color getter ////////////////////////
+////////////// Cat Color getter ////////////////////////
 Color Cat::getColor() const noexcept {
     return color;
 }
@@ -141,7 +134,7 @@ bool Cat::validation() const noexcept {
     return true;
 }
 
-///////// Name Validation //////////
+///////// Name Validation ////////////////
 bool Cat::validateName(const char *newName) {
     if( newName == nullptr ) {
         throw invalid_argument(PROGRAM_NAME ": name must not be NULL");
@@ -158,7 +151,7 @@ bool Cat::validateName(const char *newName) {
     return true;
 }
 
-
+//////////////////// Gender Validation ///////////////////////
 bool Cat::validateGender(const Gender newGender) {
     if( newGender == UNKNOWN_GENDER ) {
         throw invalid_argument( PROGRAM_NAME ": Gender must be known") ;
@@ -168,7 +161,7 @@ bool Cat::validateGender(const Gender newGender) {
 }
 
 
-
+////////////////// Breed Validation ////////////////////////
 bool Cat::validateBreed(const Breed newBreed) {
     if( newBreed == UNKNOWN_BREED ) {
         throw invalid_argument( PROGRAM_NAME ":The cat's breed must be known" ) ;
@@ -177,6 +170,7 @@ bool Cat::validateBreed(const Breed newBreed) {
     return true;
 }
 
+///////////////// Color Validation ///////////////////////
 bool Cat::validateColor(const Color newColor ) {
     if( newColor == UNKNOWN_COLOR ) {
         throw invalid_argument( PROGRAM_NAME ": The cat's color must be known" ) ;
@@ -185,6 +179,7 @@ bool Cat::validateColor(const Color newColor ) {
     return true ;
 }
 
+///////////////// Weight Validation /////////////////////
 bool Cat::validateWeight(const Weight newWeight) {
     if( newWeight <= 0 ) {
         throw invalid_argument( PROGRAM_NAME ": The cat's weight must be > 0" ) ;
@@ -193,6 +188,7 @@ bool Cat::validateWeight(const Weight newWeight) {
     return true;
 }
 
+/////////////////////// Setters ////////////////////////
 // Fixed cat cannot be unfixed //
 void Cat::fixCat() noexcept {
     Cat::isCatFixed = true;

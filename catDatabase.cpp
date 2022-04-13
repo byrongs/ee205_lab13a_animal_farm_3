@@ -42,7 +42,7 @@ void initializeDatabase() {
 }
 
 
-/// Finds findCat in the database ///
+/// Finds the findCat in the database ///
 bool isCatInDatabase( const Cat* presentCat ) {
     assert( presentCat != nullptr ) ;
 
@@ -87,5 +87,5 @@ extern bool validateDatabase() {
     cout << PROGRAM_NAME << ": The database is valid." << endl ;
 #endif
 
-    return true ;  // Healthy database
+    return true ;  // All cats are present aka Healthy database
 }

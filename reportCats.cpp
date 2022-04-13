@@ -11,7 +11,7 @@
 
 #include <cstring>
 #include <stdexcept>
-#include <iostream>
+
 #include <cassert>
 
 #include "catDatabase.h"

@@ -22,12 +22,12 @@ enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
 
 enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
 
-enum Color  { UNKNOWN_COLOR=-1, BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
+enum Color  { UNKNOWN_COLOR=0, BLACK, WHITE, RED, BLUE, GREEN, PINK } ;
 
 //////////////////////////////// Typedefs /////////////////////////////////////////////////////
 typedef float Weight ;
 
 typedef int NumCats;
 
-
-const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown
+////////////////////////////////////////////////////////////////////////////////////////////
+const Weight UNKNOWN_WEIGHT = -1 ;  // Set value when the weight is unknown

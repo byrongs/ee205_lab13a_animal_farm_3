@@ -28,7 +28,7 @@ bool addCat(Cat* newCat) {
     newCat->validation() ;
 
     if( isCatInDatabase( newCat ) ) {
-        throw logic_error( PROGRAM_NAME ": The cat is already in database!" );
+        throw logic_error( PROGRAM_NAME ": The cat is already in database!" ); // the cat already exists //
     }
 
     assert( validateDatabase() ) ;
@@ -40,6 +40,7 @@ bool addCat(Cat* newCat) {
     numCats++;
 
     assert( validateDatabase() ) ;
+
 
 #ifdef DEBUG
     cout << PROGRAM_NAME << ": New cat successfully added" << newCat->getName() << endl ;

@@ -36,21 +36,23 @@ public:  //////////////////////////// Constructors /////////////////////////////
          const Color newColor );
 
 
-    virtual ~Cat();
+    virtual ~Cat(); //Virtual function
 
 public:  ///////////// Public Getters & Setters //////////////////////////
     const char *getName() const noexcept ; /// Name getter
     void setName( const char* newName );   /// Name setter
 
 
-    Gender getGender() const noexcept ;
-    Breed getBreed() const noexcept ;
-    bool isFixed() const noexcept ;
-    void fixCat() noexcept ;
-    Weight getWeight() const noexcept ;
-    void setWeight(Weight newWeight) ;
+    Gender getGender() const noexcept ; // Gender getter
+    Breed getBreed() const noexcept ; // Breed getter
 
-    Color getColor() const noexcept ;
+    bool isFixed() const noexcept ; // Fixed Cat getter
+    void fixCat() noexcept ; // fix cat defined function
+    Weight getWeight() const noexcept ; // Weight getter
+
+    void setWeight(Weight newWeight) ; // Weight setter
+
+    Color getColor() const noexcept ; // Color getter
 
 
 public: //////////////// Static Public Methods ////////////////////////
