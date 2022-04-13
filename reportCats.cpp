@@ -24,7 +24,7 @@ using namespace std;
 
 ///////////// Prints all existing cats in the database ////////////////////////
 bool printAllCats() {
-    int numCats = 0 ;
+    NumCats numCats = 0 ;
 
     assert( validateDatabase() ) ;
 
@@ -42,7 +42,7 @@ bool printAllCats() {
 }
 
 
-
+//////// Finds a cat by its name //////////
 Cat* findCatByName( const char* name ) {
     assert( Cat().validateName( name ) );
 
@@ -84,3 +84,15 @@ const char* breedName( const enum Breed breed ) {
     throw logic_error(PROGRAM_NAME ": The breed is not mapped to any string value");
 }
 
+const char* colorName( const enum Color color ) {
+    switch( color ) {
+        case UNKNOWN_COLOR: return "UNKNOWN COLOR" ;
+        case BLACK: return "BLACK" ;
+        case WHITE: return "WHITE" ;
+        case RED: return "RED" ;
+        case BLUE: return "BLUE" ;
+        case GREEN: return "GREEN" ;
+        case PINK: return "PINK" ;
+    }
+    throw logic_error(PROGRAM_NAME ": The color is not mapped to any string value");
+}

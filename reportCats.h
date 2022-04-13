@@ -25,3 +25,6 @@ extern const char* genderName( enum Gender gender ) ;
 
 // Returns the string for the cat's breed //
 extern const char* breedName( enum Breed breed ) ;
+
+// Returns the string for the cat's color //
+extern const char* colorName( enum Color color ) ;

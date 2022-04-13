@@ -28,9 +28,7 @@ Cat* headPointer = nullptr ; // head pointer that is NULL
 NumCats numCats = 0 ; // Using typedef
 
 
-/// Initialize the catabase
-///
-/// @throws logic_error If the old database isn't empty
+/// Initialize the database for new data ///
 void initializeDatabase() {
     if(headPointer != nullptr ) {
         throw logic_error( PROGRAM_NAME ": Delete the old database first") ;

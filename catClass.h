@@ -29,14 +29,18 @@ public:  //////////////////////////// Constructors /////////////////////////////
 
 
 
-    Cat( const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight );
+    Cat( const char *newName,
+         const Gender newGender,
+         const Breed newBreed,
+         const Weight newWeight,
+         const Color newColor );
 
 
     virtual ~Cat();
 
 public:  ///////////// Public Getters & Setters //////////////////////////
-    const char *getName() const noexcept ; ///< Get the Cat's name
-    void setName( const char* newName );   ///< Set the Cat's name.  The name
+    const char *getName() const noexcept ; /// Name getter
+    void setName( const char* newName );   /// Name setter
 
 
     Gender getGender() const noexcept ;
@@ -46,12 +50,17 @@ public:  ///////////// Public Getters & Setters //////////////////////////
     Weight getWeight() const noexcept ;
     void setWeight(Weight newWeight) ;
 
+    Color getColor() const noexcept ;
+
+
 public: //////////////// Static Public Methods ////////////////////////
 
     static bool validateName( const char* newName ) ;
     static bool validateGender( const Gender newGender ) ;
     static bool validateBreed( const Breed newBreed ) ;
     static bool validateWeight( const Weight newWeight ) ;
+
+    static bool validateColor(const Color newColor ) ;
 
 public:  /////////////////////////// Public Methods ////////////////////////////
     bool print() const noexcept ;
@@ -73,10 +82,12 @@ protected:
     bool        isCatFixed ;
     Weight      weight ;
 
+    enum Color color ;
 protected: ////////////////////// Protected Methods (Will be Public for now) ///////////////////////////
 public:
     void setGender(Gender newGender);
     void setBreed(Breed newBreed);
 
+    void setColor(Color newColor ) ;
 };
 

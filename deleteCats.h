@@ -12,8 +12,8 @@
 
 #include "catClass.h"
 
-/// Delete all of the cats in the database.
+/// Deletes all cats in the database.
 extern bool deleteAllCats() ;
 
-/// Delete a cat in the database.
+/// Delete specific pointed cat in the database.
 extern bool deleteCat( Cat* deleteThisCat ) ;

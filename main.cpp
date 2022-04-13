@@ -50,6 +50,7 @@ int main() {
       assert(testCat.getBreed() == UNKNOWN_BREED);
       assert(testCat.isFixed() == false);
       assert(testCat.getWeight() == UNKNOWN_WEIGHT);
+      assert(testCat.getColor() == UNKNOWN_COLOR);
       assert(!testCat.isFixed());
       assert(!testCat.validation());  // The default cat is invalid
 
@@ -68,7 +69,7 @@ int main() {
       // Test valid names
       testCat.setName("A");       // A 1 character name is valid
       testCat.setName(MAX_NAME1); // A MAX_NAME1 name is valid
-
+      }
       // Test for name too large
       try {
          testCat.setName(ILLEGAL_NAME);
@@ -109,18 +110,18 @@ int main() {
 #endif
 
     bool result ;
-    result = addCat( new Cat( "Loki", MALE, PERSIAN, 1.0 )) ;
+    result = addCat( new Cat( "Loki", MALE, PERSIAN, 1.0, BLACK)) ;
     assert( result ) ;
     if( !result ) throw logic_error (PROGRAM_NAME ": addCat() failed" ) ;
-    result = addCat( new Cat( "Milo", MALE, MANX , 1.1 )) ;
+    result = addCat( new Cat( "Milo", MALE, MANX , 1.1, PINK )) ;
     assert( result ) ;
-    result = addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 )) ;
+    result = addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2, RED )) ;
     assert( result ) ;
-    result = addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3 )) ;
+    result = addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3, BLUE )) ;
     assert( result ) ;
-    result = addCat( new Cat( "Trin", FEMALE, MANX, 1.4 )) ;
+    result = addCat( new Cat( "Trin", FEMALE, MANX, 1.4,GREEN )) ;
     assert( result ) ;
-    result = addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5 )) ;
+    result = addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5, WHITE )) ;
     assert( result ) ;
 
 #ifdef DEBUG

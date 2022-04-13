@@ -22,11 +22,13 @@ using namespace std ;
 
 
 ///////////////////////////// Cat constructor with fields /////////////////////////////////////////////////
-Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight) : Cat() {
+Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight, const Color newColor ) : Cat() {
     setName( newName ) ;
     setGender( newGender ) ;
     setBreed( newBreed ) ;
     setWeight( newWeight ) ;
+
+    setColor( newColor ) ;
 
     assert( validation() ) ;
 }
@@ -38,6 +40,9 @@ void Cat::destructMemberData()  {
     breed = UNKNOWN_BREED ;
     isCatFixed = false ;
     weight = UNKNOWN_WEIGHT ;
+
+    color = UNKNOWN_COLOR ;
+
     next = nullptr ;
 }
 
@@ -52,7 +57,7 @@ Cat::Cat() {
 
 
 
-
+////// Virtual function ////////
 Cat::~Cat() {
     destructMemberData() ;
 }
@@ -61,7 +66,7 @@ Cat::~Cat() {
 const char *Cat::getName() const noexcept {
     return name;
 }
-
+/////////////////// Cat name setter ////////////////////////////////////
 void Cat::setName(const char *newName) { // Names can be changed
     validateName( newName ) ;
 
@@ -80,6 +85,11 @@ Breed Cat::getBreed() const noexcept {
     return breed;
 }
 
+////////////// Cat Collar Color getter ////////////////////////
+Color Cat::getColor() const noexcept {
+    return color;
+}
+
 ////////////// Cat isFixed ////////////////////////////////////
 bool Cat::isFixed() const noexcept {
     return isCatFixed;
@@ -89,6 +99,7 @@ bool Cat::isFixed() const noexcept {
 Weight Cat::getWeight() const noexcept {
     return weight;
 }
+
 
 /// Format a line for printing the members of a class (From pdf) ///
 #define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
@@ -108,6 +119,8 @@ bool Cat::print() const noexcept {
     FORMAT_LINE( "Cat", "isFixed" )      << isFixed()   << endl ;
     FORMAT_LINE( "Cat", "weight" )       << getWeight() << endl ;
 
+    FORMAT_LINE( "Cat", "color" )        << getColor()  << endl ;
+
     return true ;
 }
 
@@ -118,6 +131,8 @@ bool Cat::validation() const noexcept {
         validateGender( gender ) ;
         validateBreed( breed ) ;
         validateWeight( weight ) ;
+
+        validateColor( color ) ;
     } catch (exception const &e) {
         cout << e.what() << endl ; //return a null terminated character sequence that is used to identify the exception.
         return false ;
@@ -126,7 +141,7 @@ bool Cat::validation() const noexcept {
     return true;
 }
 
-
+///////// Name Validation //////////
 bool Cat::validateName(const char *newName) {
     if( newName == nullptr ) {
         throw invalid_argument(PROGRAM_NAME ": name must not be NULL");
@@ -162,7 +177,13 @@ bool Cat::validateBreed(const Breed newBreed) {
     return true;
 }
 
+bool Cat::validateColor(const Color newColor ) {
+    if( newColor == UNKNOWN_COLOR ) {
+        throw invalid_argument( PROGRAM_NAME ": The cat's color must be known" ) ;
+    }
 
+    return true ;
+}
 
 bool Cat::validateWeight(const Weight newWeight) {
     if( newWeight <= 0 ) {
@@ -191,6 +212,15 @@ void Cat::setGender(Gender newGender) {
 
     validateGender( newGender );
     Cat::gender = newGender ;
+}
+
+void Cat::setColor(Color newColor) { // Cat's color will not be set //
+    if( color != UNKNOWN_COLOR ) {
+        throw logic_error( PROGRAM_NAME ": Cat's color cannot be set ") ;
+    }
+
+    validateColor( newColor );
+    Cat::color = newColor ;
 }
 
 // Cat's breed cannot be set once it is known from getBreed //////////
