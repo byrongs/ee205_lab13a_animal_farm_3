@@ -2,6 +2,7 @@
 
 
 
+
 #include <string>
 #include "config.h"
 #include "Weight.h"
@@ -10,6 +11,8 @@
 
 #ifndef EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
 #define EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
+#endif //EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
+
 ////////// Animal Class /////////////////
 class Animal {
 public:
@@ -36,7 +39,7 @@ public:
 
     //// validate ////
     bool validate() const noexcept override;
-    virtual bool valdiate() const noexcept;
+    virtual bool validaate() const noexcept;
 
     //// operator > ////
     virtual bool operator>(const Node &rightSide);
@@ -66,11 +69,3 @@ private: //// Private Attributes ////
 
 
 
-
-
-
-
-
-
-
-#endif //EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H

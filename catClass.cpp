@@ -20,15 +20,7 @@
 
 
 ///////////////////////////// Cat constructor with fields /////////////////////////////////////////////////
-Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight, const Color newColor ) : Cat() {
-    setName( newName ) ;
-    setGender( newGender ) ;
-    setBreed( newBreed ) ;
-    setWeight( newWeight ) ;
-    setColor( newColor ) ;
 
-    assert( validation() ) ;
-}
 
 ///////////////// Cat Class destructor //////////////////
 
@@ -86,23 +78,7 @@ Weight Cat::getWeight() const noexcept {
 #define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
 
 /// @returns true if everything worked correctly ///
-bool Cat::print() const noexcept {
-    assert( validation() ) ;
 
-    cout << setw(80) << setfill( '=' ) << "" << endl ;
-    cout << setfill( ' ' ) ;
-    cout << left ;
-    cout << boolalpha ;
-    FORMAT_LINE( "Cat", "name" )         << getName()   << endl ;
-    FORMAT_LINE( "Cat", "gender" )       << genderName( getGender() ) << endl ;
-    FORMAT_LINE( "Cat", "breed" )        << breedName( getBreed() )   << endl ;
-    FORMAT_LINE( "Cat", "isFixed" )      << isFixed()   << endl ;
-    FORMAT_LINE( "Cat", "weight" )       << getWeight() << endl ;
-
-    FORMAT_LINE( "Cat", "color" )        << colorName( getColor() )  << endl ;
-
-    return true ;
-}
 
 /////////////// Validation method //////////////////////
 bool Cat::validation() const noexcept {
