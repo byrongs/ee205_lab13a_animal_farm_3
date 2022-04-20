@@ -15,9 +15,7 @@
 #include <cassert>
 
 #include "catClass.h"
-#include "reportCats.h"
 
-using namespace std ;
 
 
 
@@ -33,16 +31,6 @@ Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cons
 }
 
 ///////////////// Cat Class destructor //////////////////
-void Cat::destructMemberData()  {
-    memset( name, 0, MAX_CAT_NAME );
-    gender = UNKNOWN_GENDER ;
-    breed = UNKNOWN_BREED ;
-    isCatFixed = false ;
-    weight = UNKNOWN_WEIGHT ;
-    color = UNKNOWN_COLOR ;
-
-    next = nullptr ;
-}
 
 Cat::Cat() {
     destructMemberData(); // Calling the destructor //

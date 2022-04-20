@@ -52,7 +52,6 @@ public:
 protected: //// Protected Member Functions ////
     void setGender(const Gender newGender);
 
-    static bool compareByAddress(const Node *node1, const Node *node2);
 
     Node* next = nullptr;
 
@@ -61,30 +60,6 @@ private: //// Private Attributes ////
     std::string classification;
     Gender gender = Gender::UNKNOWN_GENDER;
     Weight weight;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 };
 

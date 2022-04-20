@@ -11,9 +11,19 @@
 
 #pragma once
 
-/////////////////////////Definitions /////////////////////////
+///////////////////////// Definitions /////////////////////////
 #define PROGRAM_TITLE "Animal Farm 3"
 
-
 #define PROGRAM_NAME  "animal_farm_3"
+
+#define TRACE_START
+
+#define TRACE_END
+
+#define PRINT_HEADING_FOR_DUMP
+
+#define FORMAT_LINE_FOR_DUMP(className, member)
+
+
+
 

@@ -11,7 +11,8 @@
 #pragma once
 
 #include "config.h"
-#include "Mammal.H"
+#include "Mammal.h"
+#include "catClass.h"
 
 
 
@@ -56,8 +57,7 @@ public:  ///////////// Public Member Functions //////////////////////////
     std::string GetName() const noexcept;
 
     void
-
-public:  /////////////////////////// Public Methods ////////////////////////////
+    /////////////////////////// Public Methods ////////////////////////////
     bool Cat::validate() const;
     bool Cat::validateName( const std::string & newName);
 
