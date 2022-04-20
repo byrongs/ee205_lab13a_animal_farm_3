@@ -11,85 +11,54 @@
 #pragma once
 
 #include "config.h"
+#include "Mammal.H"
 
 
-#define MAX_CAT_NAME (50) /// Max chars in a cat's name
 
-//////////////////// The Cat Class ////////////////////////////////////////
+//////////////////// The Cat Class /////////////////////////////////////
 class Cat {
 
 
 public:  // Public Member Variables //
-    Cat*        next ;       //Cat pointer for linked list
-
+    Cat::Cat( const std::string &newName );
 
 
 public:  //////////////////////////// Constructors /////////////////////////////
     Cat();
 
 
+    Cat( const std::string     &newName,
+         const Color            newColor,
+         const bool             newIsFixed,
+         const Gender           newGender,
+         const Weight::t_weight newWeight );
 
-    Cat( const char *newName,
-         const Gender newGender,
-         const Breed newBreed,
-         const Weight newWeight,
-         const Color newColor );
+/////// dump ///////
+void Cat::dump() const noexcept override;
 
-
-    virtual ~Cat(); //Virtual function
-
-public:  ///////////// Public Getters & Setters //////////////////////////
-    const char *getName() const noexcept ; /// Name getter
-    void setName( const char* newName );   /// Name setter
+///// fixCat ////////
+void Cat::fixCat() ;
 
 
-    Gender getGender() const noexcept ; // Gender getter
-    Breed getBreed() const noexcept ; // Breed getter
 
-    bool isFixed() const noexcept ; // Fixed Cat getter
-    void fixCat() noexcept ; // fix cat defined function
-    Weight getWeight() const noexcept ; // Weight getter
-
-    void setWeight(Weight newWeight) ; // Weight setter
-
-    Color getColor() const noexcept ; // Color getter
+///// Speak ////////
+std::string Cat::speak() const;
 
 
-public: //////////////// Static Public Methods ////////////////////////
+public:  ///////////// Public Member Functions //////////////////////////
 
-    static bool validateName( const char* newName ) ;
-    static bool validateGender( const Gender newGender ) ;
-    static bool validateBreed( const Breed newBreed ) ;
-    static bool validateWeight( const Weight newWeight ) ;
+    void Cat::setName( const std::string & newName);
 
-    static bool validateColor(const Color newColor ) ;
+
+    Cat (const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender,
+         const Weight::t_weight newWeight);
+
+    std::string GetName() const noexcept;
+
+    void
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-    bool print() const noexcept ;
-    bool validation() const noexcept;
+    bool Cat::validate() const;
+    bool Cat::validateName( const std::string & newName);
 
-
-
-private:  /////////////////////////// Private Methods //////////////////////////
-    void destructMemberData();
-
-
-
-
-//////////////// Protected Cat Members ///////////////////////
-protected:
-    char        name[MAX_CAT_NAME] ;
-    enum Gender gender ;
-    enum Breed  breed ;
-    bool        isCatFixed ;
-    Weight      weight ;
-
-    enum Color color ;
-protected: ////////////////////// Protected Methods (Will be Public for now) ///////////////////////////
-public:
-    void setGender(Gender newGender);
-    void setBreed(Breed newBreed);
-
-    void setColor(Color newColor ) ;
-};
 

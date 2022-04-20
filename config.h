@@ -12,22 +12,8 @@
 #pragma once
 
 /////////////////////////Definitions /////////////////////////
-#define PROGRAM_TITLE "Animal Farm 2"
+#define PROGRAM_TITLE "Animal Farm 3"
 
 
-#define PROGRAM_NAME  "animal_farm_2"
+#define PROGRAM_NAME  "animal_farm_3"
 
-////////////////////////////////////// ENUMS ///////////////////////////////////////////////////
-enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
-
-enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
-
-enum Color  { UNKNOWN_COLOR=0, BLACK, WHITE, RED, BLUE, GREEN, PINK } ;
-
-//////////////////////////////// Typedefs /////////////////////////////////////////////////////
-typedef float Weight ;
-
-typedef int NumCats;
-
-////////////////////////////////////////////////////////////////////////////////////////////
-const Weight UNKNOWN_WEIGHT = -1 ;  // Set value when the weight is unknown
