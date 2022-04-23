@@ -13,7 +13,9 @@
 #include "config.h"
 #include "Mammal.h"
 #include "catClass.h"
-
+#include "Gender.h"
+#include "Weight.h"
+#include "Animal.h"
 
 
 //////////////////// The Cat Class /////////////////////////////////////

@@ -15,6 +15,10 @@
 #include <cassert>
 
 #include "catClass.h"
+#include "Animal.h"
+#include "Weight.h"
+#include "Mammal.h"
+#include "Color.h"
 
 
 
