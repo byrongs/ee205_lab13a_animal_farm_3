@@ -23,44 +23,42 @@ class Cat {
 
 
 public:  // Public Member Variables //
-    Cat::Cat( const std::string &newName );
+    Cat(const std::string &newName);
 
 
 public:  //////////////////////////// Constructors /////////////////////////////
     Cat();
 
 
-    Cat( const std::string     &newName,
-         const Color            newColor,
-         const bool             newIsFixed,
-         const Gender           newGender,
-         const Weight::t_weight newWeight );
+    Cat(const std::string &newName,
+        const Color newColor,
+        const bool newIsFixed,
+        const Gender newGender,
+        const Weight::t_weight newWeight);
 
 /////// dump ///////
-void Cat::dump() const noexcept override;
+    void dump() const noexcept override;
 
 ///// fixCat ////////
-void Cat::fixCat() ;
-
+    void fixCat() const noexcept;
 
 
 ///// Speak ////////
-std::string Cat::speak() const;
+    std::string speak() const noexcept override ;
 
 
 public:  ///////////// Public Member Functions //////////////////////////
 
-    void Cat::setName( const std::string & newName);
-
-
-    Cat (const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender,
-         const Weight::t_weight newWeight);
 
     std::string GetName() const noexcept;
 
-    void
-    /////////////////////////// Public Methods ////////////////////////////
-    bool Cat::validate() const;
-    bool Cat::validateName( const std::string & newName);
+    void setName(const std::string &newName);
+
+    bool isFixed() const noexcept;
+
+    bool validate() const;
+
+    bool validateName(const std::string &newName);
 
 
+};

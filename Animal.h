@@ -16,6 +16,8 @@
 ////////// Animal Class /////////////////
 class Animal {
 public:
+    static const std::string KINGDOM_NAME;
+
     //////// Public Member Functions ///
     Animal(const Weight::t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies) ;
 
@@ -32,14 +34,14 @@ public:
     Weight::t_weight getWeight() const noexcept ;
 
     //// dump ////
-    void dump() const noexcept override ;
-    virtual void dump() const
+    virtual void dump() const noexcept override;
+
     //// speak ////
     virtual std::string speak() const noexcept=0;
 
     //// validate ////
-    bool validate() const noexcept override;
-    virtual bool validaate() const noexcept;
+    bool validate() noexcept ;
+
 
     //// operator > ////
     virtual bool operator>(const Node &rightSide);
@@ -50,7 +52,7 @@ public:
     static bool validateSpecies(const std::string &checkSpecies ) noexcept;
 
     //// Static Public Attributes ////
-    static const std::string KINGDOM_NAME;
+
 
 protected: //// Protected Member Functions ////
     void setGender(const Gender newGender);
