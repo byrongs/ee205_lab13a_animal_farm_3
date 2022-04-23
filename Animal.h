@@ -1,7 +1,17 @@
+///////////////////////////////////////////////////////////////////////////////
+///         University of Hawaii, College of Engineering
+/// @brief  ee205_lab10d_animal_farm_3 - EE 205 - Spr 2022
+///
+///
+///
+/// @file Animal.h
+/// @version 1.0
+///
+/// @author Byron Soriano <byrongs@hawaii.edu>
+/// @date   19_April_2022
+///////////////////////////////////////////////////////////////////////////////
 
-
-
-
+#pragma once
 
 #include <string>
 #include "config.h"
@@ -14,7 +24,7 @@
 #endif //EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
 
 ////////// Animal Class /////////////////
-class Animal {
+class Animal: public Node {
 public:
     static const std::string KINGDOM_NAME;
 
@@ -34,13 +44,13 @@ public:
     Weight::t_weight getWeight() const noexcept ;
 
     //// dump ////
-    virtual void dump() const noexcept override;
+    void dump() const noexcept override;
 
     //// speak ////
     virtual std::string speak() const noexcept=0;
 
     //// validate ////
-    bool validate() noexcept ;
+    bool validate() const noexcept override ;
 
 
     //// operator > ////

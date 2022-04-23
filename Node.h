@@ -27,3 +27,12 @@ protected: ///// Static Protected Member Functions ////
 
 
 };
+
+bool Node::compareByAddress(const Node *node1, const Node *node2) {
+    if( node1 > node2) {
+        return true;
+    }
+    return false;
+}
+
+
