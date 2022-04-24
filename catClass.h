@@ -19,22 +19,40 @@
 
 
 //////////////////// The Cat Class /////////////////////////////////////
-class Cat {
+class Cat : public Mammal {
 
 
 public:  // Public Member Variables //
-    Cat(const std::string &newName);
+    explicit Cat(const std::string &newName) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
+        if (!validateName(newName)) {
+            throw std::out_of_range("Cats must have a name");
+        }
+        name = newName;
+        isCatFixed = false;
+
+        Cat::validate();
+    }
+
+    static const std::string SPECIES_NAME;
+    static const Weight::t_weight MAX_WEIGHT;
+
 
 
 public:  //////////////////////////// Constructors /////////////////////////////
-    Cat();
-
 
     Cat(const std::string &newName,
         const Color newColor,
         const bool newIsFixed,
         const Gender newGender,
-        const Weight::t_weight newWeight);
+        const Weight::t_weight newWeight) :
+        Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME ) {
+        if( !validateName( newName) ) {
+            throw std::out_of_range( "Cats must have a name" );
+        }
+        name = newName;
+        isCatFixed = newIsFixed;
+        Cat::validate();
+    }
 
 /////// dump ///////
     void dump() const noexcept override;
@@ -56,9 +74,16 @@ public:  ///////////// Public Member Functions //////////////////////////
 
     bool isFixed() const noexcept;
 
-    bool validate() const;
+    bool validate() const noexcept override;
 
-    bool validateName(const std::string &newName);
+    static bool validateName(const std::string &newName);
 
+
+protected:
+    std::string name;
+    bool isCatFixed;
+
+public:
+    void initializeData();
 
 };

@@ -28,6 +28,7 @@ enum class Color {
 
 //////// Ostream ///////
 
-std::osteam & operator<<(std::ostream & lhs_stream,
+std::ostream & operator<<(std::ostream & lhs_stream,
         const Color & rhs_color );
+
 

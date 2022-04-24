@@ -26,24 +26,32 @@
 ///////////////////////////// Cat constructor with fields /////////////////////////////////////////////////
 
 
-///////////////// Cat Class destructor //////////////////
+
+static const Weight::t_weight MAX_WEIGHT = 40;
+
+static const std::string SPECIES_NAME = "Felis Catus" ;
+
+
+
+void Cat::initializeData() {
+    memset( name, 0);
+    gender = UNKNOWN_GENDER ;
+    breed = UNKNOWN_BREED ;
+    isCatFixed = false ;
+    weight = UNKNOWN_WEIGHT ;
+    next = nullptr ;
+}
 
 Cat::Cat() {
-    destructMemberData(); // Calling the destructor //
+    zeroOutMemberData() ;
 }
 
 
 
-////// Virtual function //////////////////////////////////////////////////
-Cat::~Cat() {
-    destructMemberData() ;
-}
 
-////////////////////// Cat name getter ///////////////////////////////////
-const char *Cat::getName() const noexcept {
-    return name;
-}
-/////////////////// Cat name setter ////////////////////////////////////
+
+
+
 void Cat::setName(const char *newName) { // Names can be changed
     validateName( newName ) ;
 
@@ -51,28 +59,28 @@ void Cat::setName(const char *newName) { // Names can be changed
     strcpy( name, newName );
 }
 
-
-///////////////// Cat gender getter /////////////////////////////
 Gender Cat::getGender() const noexcept {
     return gender;
 }
 
-//////////////// Cat breed getter //////////////////////////////
 Breed Cat::getBreed() const noexcept {
     return breed;
 }
 
-////////////// Cat Color getter ////////////////////////
 Color Cat::getColor() const noexcept {
     return color;
 }
 
-////////////// Cat isFixed ////////////////////////////////////
+
 bool Cat::isFixed() const noexcept {
     return isCatFixed;
 }
 
-//////////////// Cat weight getter ////////////////////////////
+std::string Cat::GetName() const noexcept {
+    return std::string( newName );
+}
+
+
 Weight Cat::getWeight() const noexcept {
     return weight;
 }
@@ -177,7 +185,7 @@ void Cat::setGender(Gender newGender) {
     Cat::gender = newGender ;
 }
 
-void Cat::setColor(Color newColor) { // Cat's color will not be set //
+void Color::setColor(Color newColor) { // Cat's color will not be set //
     if( color != UNKNOWN_COLOR ) {
         throw logic_error( PROGRAM_NAME ": Cat's color cannot be set ") ;
     }
