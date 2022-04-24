@@ -5,10 +5,12 @@
 #define EE205_LAB_10D_ANIMAL_FARM_2_SINGLYLINKEDLIST_H
 #endif //EE205_LAB_10D_ANIMAL_FARM_2_SINGLYLINKEDLIST_H
 
+#pragma once
+
 #include "Node.h"
 #include "List.h"
 
-class SinglyLinkedList {
+class SinglyLinkedList: public List {
 
 public: //// Public Member Functions ////
 
@@ -23,21 +25,6 @@ public: //// Public Member Functions ////
     void dump() const noexcept override;
 
     bool validate() const noexcept override;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 };

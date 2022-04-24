@@ -270,12 +270,6 @@ std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight ) {
 
 
 
-
-
-
-
-
-
 ////////////////// Voids ////////////////////////////////////
 
 
