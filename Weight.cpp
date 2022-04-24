@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <iomanip>
+#include <cassert>
 
 using namespace std;
 
@@ -75,6 +76,7 @@ void Weight::dump() const noexcept {
     cout << left;
     cout << boolalpha;
 
+    FORMAT_LINE( "Weight", "this" )  << this << endl ;
     FORMAT_LINE("Weight", "isKnown") << isWeightKnown() << endl;
     FORMAT_LINE("Weight", "weight") << getWeight() << endl;
     FORMAT_LINE("Weight", "unitOfWeight") << getWeightUnit() << endl;
@@ -102,33 +104,35 @@ float Weight::fromPoundToSlug(const float pound) noexcept {
     return pound * SLUGS_IN_A_POUND;
 }
 
+/////////////////////// Convert to Common Weight ///////////////////////////////////////////
 
-float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit) {
-    if (toUnit == KILO) {
-        if (fromUnit == POUND) {
-            return fromPoundToKilogram(fromWeight);
-        }
-        if (fromUnit == SLUG) {
-            return fromPoundToKilogram(fromSlugToPound(fromWeight));
-        }
+
+
+float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit) noexcept {
+    float commonWeight = UNKNOWN_WEIGHT;
+
+    switch( fromUnit ) {
+        case POUND: commonWeight = fromWeight ;
+            break;
+        case KILO: commonWeight = fromKilogramToPound( fromWeight ) ;
+            break;
+        case SLUG: commonWeight = fromSlugToPound( fromWeight ) ;
+            break;
+        default: assert( false );
     }
-    if (toUnit == POUND) {
-        if (fromUnit == KILO) {
-            return fromKilogramToPound(fromWeight);
-        }
-        if (fromUnit == SLUG) {
-            return fromSlugToPound(fromWeight);
-        }
+    float toWeight = UNKNOWN_WEIGHT;
+
+    switch( toUnit ) {
+        case POUND: toWeight = commonWeight ;  //Pound is the common weight already//
+            break;
+        case KILO: toWeight = fromPoundToKilogram( commonWeight );
+            break;
+        case SLUG: toWeight = fromPoundToSlug( commonWeight );
+            break;
+        default: assert( false );
     }
-    if (toUnit == SLUG) {
-        if (fromUnit == POUND) {
-            return fromPoundToSlug(fromWeight);
-        }
-        if (fromUnit == KILO) {
-            return fromPoundToSlug(fromKilogramToPound(fromWeight));
-        }
-    }
-    throw logic_error("Invalid Units");
+
+    return toWeight ;
 }
 
 
@@ -194,9 +198,7 @@ bool Weight::isWeightValid(float checkWeight) const noexcept {
 
 ///////////////// Operators /////////////////////////////////////////////
 bool Weight::operator==(const Weight &rhs_Weight) const {
-    /// Remember to convert the two weight's units into a common unit!
-    /// Treat unknown weights as 0 (so we can sort them without dealing
-    /// with exceptions)
+
     float lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
     float rhs_weight = (rhs_Weight.bIsKnown) ?
                        rhs_Weight.getWeight(Weight::POUND) : 0;
@@ -212,19 +214,65 @@ bool Weight::operator<(const Weight &rhs_Weight) const {
 
     return lhs_weight < rhs_weight;
 }
+
+
+Weight& Weight::operator+=( const float rhs_addToWeight ) {
+    if( !bIsKnown ) {
+        throw out_of_range( "The weight is unknown" ) ;
+    }
+
+    setWeight( weight + rhs_addToWeight );
+
+    return *this;
+}
+
+
 ///////////////////// Ostream ///////////////////////
-ostream &operator<<(ostream &lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight) {
-    switch (rhs_UnitOfWeight) {
-        case Weight::KILO:
-            return lhs_stream << Weight::KILO_LABEL;
-        case Weight::POUND:
-            return lhs_stream << Weight::POUND_LABEL;
-        case Weight::SLUG:
-            return lhs_stream << Weight::SLUG_LABEL;
-        default:
-            throw out_of_range(" Unit isn't mapped to any string");
+std::ostream &Weight::operator<<(ostream &lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight) {
+    switch( rhs_UnitOfWeight ) {
+        case Weight::POUND: return lhs_stream << Weight::POUND_LABEL ;
+        case Weight::KILO:  return lhs_stream << Weight::KILO_LABEL ;
+        case Weight::SLUG:  return lhs_stream << Weight::SLUG_LABEL ;
+        default: throw out_of_range( "Unit can't be converted into a string");
     }
 }
+
+
+std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight ) {
+    if( !rhs_Weight.isWeightKnown() && !rhs_Weight.hasMaxWeight() ) {
+        lhs_stream << "Weight is unknown" ;
+        return lhs_stream;
+    }
+    else if( rhs_Weight.isWeightKnown() ) {
+        lhs_stream << rhs_Weight.getWeight();
+    } else {
+        lhs_stream << "Weight is unknown";
+    }
+
+    if( rhs_Weight.hasMaxWeight() ) {
+        lhs_stream << "OUT OF" << rhs_Weight.getMaxWeight();
+    }
+
+    lhs_stream << " " << rhs_Weight.getWeightUnit() ;
+
+    if(    ( !rhs_Weight.hasMaxWeight() && rhs_Weight.getWeight() > 1 )
+           || ( rhs_Weight.hasMaxWeight() && rhs_Weight.getMaxWeight() > 1 ) ) {
+        lhs_stream << "s";
+    }
+
+    return lhs_stream;
+}
+
+
+
+
+
+
+
+
+
+
+
 ////////////////// Voids ////////////////////////////////////
 
 
@@ -257,4 +305,11 @@ bool Weight::validate() {
     }
     return true;
 }
+
+
+
+#define FORMAT_LINE( className, member ) std::cout \
+<< std::setw(8) << (className) \
+<< std::setw(20) << (member)   \
+<< std::setw(52)
 

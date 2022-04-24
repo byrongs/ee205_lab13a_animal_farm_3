@@ -17,48 +17,61 @@ class Weight {
 public:
     typedef float t_weight;
 
-    enum UnitOfWeight {POUND , KILO , SLUG };
+    enum UnitOfWeight {
+        POUND, KILO, SLUG
+    };
 
 
     Weight() noexcept; /// a default weight
-    Weight (float newWeight); /// a weight with value
-    Weight (UnitOfWeight newUnitOfWeight) noexcept ; /// a weight with unit of weight
-    Weight (float newWeight, UnitOfWeight newUnitOfWeight) ; /// a weight with a value and new unit of weight
-    Weight (float newWeight, float newMaxWeight) ; /// a weight with value and maximum weight
-    Weight (UnitOfWeight newUnitOfWeight, float newMaxWeight) ; /// A weight with a UnitOfWeight and a maximum weight
-    Weight (float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight) ; /// A weight with a value, UnitOfWeight and a maximum weight
+    Weight(float newWeight); /// a weight with value
+    Weight(UnitOfWeight newUnitOfWeight) noexcept; /// a weight with unit of weight
+    Weight(float newWeight, UnitOfWeight newUnitOfWeight); /// a weight with a value and new unit of weight
+    Weight(float newWeight, float newMaxWeight); /// a weight with value and maximum weight
+    Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight); /// A weight with a UnitOfWeight and a maximum weight
+    Weight(float newWeight, UnitOfWeight newUnitOfWeight,
+           float newMaxWeight); /// A weight with a value, UnitOfWeight and a maximum weight
 
 public:
 
-    bool isWeightKnown () const ;
+    bool isWeightKnown() const;
 
-    bool hasMaxWeight () const  ;
+    bool hasMaxWeight() const;
 
 public: ////////////////// Getters and Setters //////////////////////
 
-    float   getWeight () const noexcept ;
+    float getWeight() const noexcept;
 
-    float 	getWeight (UnitOfWeight weightUnits) const noexcept ;
+    float getWeight(UnitOfWeight weightUnits) const noexcept;
 
-    float 	getMaxWeight () const noexcept ;
+    float getMaxWeight() const noexcept;
 
-    UnitOfWeight getWeightUnit () const noexcept ;
+    UnitOfWeight getWeightUnit() const noexcept;
 
-    void 	setWeight (float newWeight) ;
+    void setWeight(float newWeight);
 
-    void 	setWeight (float newWeight, UnitOfWeight weightUnits) ;
+    void setWeight(float newWeight, UnitOfWeight weightUnits);
 
-    bool 	isWeightValid (float checkWeight) const noexcept ;
+    bool isWeightValid(float checkWeight) const noexcept;
 
-    bool 	validate () ;
+    bool validate();
 
-    void 	dump() const noexcept ;
+    void dump() const noexcept;
 
-    bool 	operator== (const Weight &rhs_Weight) const ;
 
-    bool 	operator< (const Weight &rhs_Weight) const ;
+    ///////////////////// Operators //////////////////////////////
+public:
 
-    Weight &operator+=(float rhs_addToWeight) ;
+    bool operator==(const Weight &rhs_Weight) const;
+
+    bool operator<(const Weight &rhs_Weight) const;
+
+    Weight &operator+=(float rhs_addToWeight);
+
+    std::ostream &operator<<(std::ostream &lhs_stream, const Weight &rhs_Weight) ;
+
+    std::ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight ) ;
+
+
 
 public: /////////// Static Public Member Functions ////////////////////
 
@@ -70,7 +83,7 @@ public: /////////// Static Public Member Functions ////////////////////
 
     static float 	fromPoundToSlug (float pound) noexcept ;
 
-    static float 	convertWeight (float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) ;
+    static float 	convertWeight (float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept ;
 
 
 public: ////////// Static Public Attributes //////////////////////////
@@ -112,4 +125,5 @@ private: //////////// Private Attributes //////////////////////////
 
 
 
-};
+
+
