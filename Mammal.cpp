@@ -3,3 +3,10 @@
 //
 
 #include "Mammal.h"
+
+using namespace std;
+
+static const std::string MAMMAL_NAME = "Mammilian" ;
+
+
+

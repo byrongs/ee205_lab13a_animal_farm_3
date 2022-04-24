@@ -58,7 +58,7 @@ public: ////////////////// Getters and Setters //////////////////////
     void dump() const noexcept;
 
 
-    ///////////////////// Operators //////////////////////////////
+    ///////////////////// Overrides //////////////////////////////
 public:
 
     bool operator==(const Weight &rhs_Weight) const;
@@ -67,9 +67,11 @@ public:
 
     Weight &operator+=(float rhs_addToWeight);
 
-    std::ostream &operator<<(std::ostream &lhs_stream, const Weight &rhs_Weight) ;
+    //////////////////////////// Operators ////////////////////
 
-    std::ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight ) ;
+    std::ostream& operator<<(std::ostream &lhs_stream, const Weight &rhs_Weight) ;
+
+    std::ostream& operator<<(std::ostream& lhs_stream, Weight::UnitOfWeight rhs_UnitOfWeight ) ;
 
 
 
@@ -104,7 +106,7 @@ private: //////////// Private Attributes //////////////////////////
     bool 	bIsKnown = false ;
     bool 	bHasMax = false ;
 
-    enum UnitOfWeight 	unitOfWeight = POUND ;
+    enum UnitOfWeight unitOfWeight = POUND ;
 
     float 	weight {} ;
     float 	maxWeight {} ;

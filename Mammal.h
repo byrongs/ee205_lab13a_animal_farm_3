@@ -9,21 +9,26 @@
 #include "Animal.h"
 #include "Color.h"
 
-class Mammal{
+class Mammal: public Animal {
 
 public: //// Public Member Functions ////
 
-    Mammal(const Weight::t_weight newMaxWeight, const std::string &newSpecies );
+    Mammal(const Weight::t_weight newMaxWeight, const std::string &newSpecies )
+    : Animal( newMaxWeight, MAMMAL_NAME, newSpecies ) {};
 
     Mammal(const Color newColor,const Gender newGender,const Weight::t_weight newWeight,const Weight::t_weight newMaxWeight,
-           const std::string &newSpecies );
+           const std::string &newSpecies ) : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {
+        setColor( newColor );
+    };
 
     ////// Getters and Setters /////////
-    Color getColor() const noexcept;
+    Color getColor()  const noexcept { return color; }
 
-    void setColor(const Color newColor ) noexcept;
+    void setColor(const Color newColor ) noexcept { color = newColor; }
 
-    void dump() const noexcept override;
+    //// dump ////
+
+    void dump() const noexcept override ;
 
     //// Static Public Attributes ////
     static const std::string MAMMAL_NAME;

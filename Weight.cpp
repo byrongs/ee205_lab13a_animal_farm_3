@@ -228,11 +228,14 @@ Weight& Weight::operator+=( const float rhs_addToWeight ) {
 
 
 ///////////////////// Ostream ///////////////////////
-std::ostream &Weight::operator<<(ostream &lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight) {
+std::ostream &Weight::operator<<(ostream &lhs_stream, Weight::UnitOfWeight rhs_UnitOfWeight) {
     switch( rhs_UnitOfWeight ) {
-        case Weight::POUND: return lhs_stream << Weight::POUND_LABEL ;
-        case Weight::KILO:  return lhs_stream << Weight::KILO_LABEL ;
-        case Weight::SLUG:  return lhs_stream << Weight::SLUG_LABEL ;
+        case Weight::POUND:
+            return lhs_stream << Weight::POUND_LABEL ;
+        case Weight::KILO:
+            return lhs_stream << Weight::KILO_LABEL ;
+        case Weight::SLUG:
+            return lhs_stream << Weight::SLUG_LABEL ;
         default: throw out_of_range( "Unit can't be converted into a string");
     }
 }
