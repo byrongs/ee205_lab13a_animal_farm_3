@@ -86,4 +86,5 @@ protected:
 public:
     void initializeData();
 
+    bool validateWeight(const Weight newWeight);
 };

@@ -47,11 +47,6 @@ Cat::Cat() {
 }
 
 
-
-
-
-
-
 void Cat::setName(const char *newName) { // Names can be changed
     validateName( newName ) ;
 
@@ -61,10 +56,6 @@ void Cat::setName(const char *newName) { // Names can be changed
 
 Gender Cat::getGender() const noexcept {
     return gender;
-}
-
-Breed Cat::getBreed() const noexcept {
-    return breed;
 }
 
 Color Cat::getColor() const noexcept {
@@ -84,12 +75,6 @@ std::string Cat::GetName() const noexcept {
 Weight Cat::getWeight() const noexcept {
     return weight;
 }
-
-
-/// Format a line for printing the members of a class (From pdf) ///
-#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
-
-/// @returns true if everything worked correctly ///
 
 
 /////////////// Validation method //////////////////////
@@ -135,15 +120,6 @@ bool Cat::validateGender(const Gender newGender) {
     return true;
 }
 
-
-////////////////// Breed Validation ////////////////////////
-bool Cat::validateBreed(const Breed newBreed) {
-    if( newBreed == UNKNOWN_BREED ) {
-        throw invalid_argument( PROGRAM_NAME ":The cat's breed must be known" ) ;
-    }
-
-    return true;
-}
 
 ///////////////// Color Validation ///////////////////////
 bool Cat::validateColor(const Color newColor ) {
@@ -200,11 +176,8 @@ void Cat::setBreed(Breed newBreed) {
         throw logic_error( PROGRAM_NAME ": The breed is already set, you can't change it" ) ;
     }
 
-
     validateBreed( newBreed ) ;
     Cat::breed = newBreed;
-
-
 
     validation();
 }
