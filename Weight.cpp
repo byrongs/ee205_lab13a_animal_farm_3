@@ -11,6 +11,7 @@
 
 
 #include "Weight.h"
+#include "catClass.h"
 
 #include <iostream>
 #include <stdexcept>
@@ -70,6 +71,7 @@ Weight::Weight(float newWeight, const Weight::UnitOfWeight newUnitOfWeight, cons
     setMaxWeight(newMaxWeight);
 }
 
+const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 /// Once UnitOfWeight is set, it can't be changed.
 /// Once maxWeight is set, it can't be changed.
