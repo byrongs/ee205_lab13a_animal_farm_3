@@ -67,8 +67,8 @@ bool Cat::isFixed() const noexcept {
     return isCatFixed;
 }
 
-std::string Cat::GetName() const noexcept {
-    return std::string( newName );
+string Cat::GetName() const noexcept {
+    return name;
 }
 
 
@@ -141,8 +141,8 @@ bool Cat::validateWeight(const Weight newWeight) {
 
 /////////////////////// Setters ////////////////////////
 // Fixed cat cannot be unfixed //
-void Cat::fixCat() noexcept {
-    Cat::isCatFixed = true;
+void Cat::fixCat() const noexcept {
+    Cat::isCatFixed;
 }
 
 // Setting the weight must be validated to be > 0 //
@@ -152,7 +152,7 @@ void Cat::setWeight(Weight newWeight) {
 }
 
 // Cat gender cannot be changed //
-void Cat::setGender(Gender newGender) {
+void Gender::setGender(Gender newGender) {
     if( gender != UNKNOWN_GENDER ) {
         throw logic_error( PROGRAM_NAME ": Cat's gender cannot be set" ) ;
     }
@@ -168,16 +168,4 @@ void Color::setColor(Color newColor) { // Cat's color will not be set //
 
     validateColor( newColor );
     Cat::color = newColor ;
-}
-
-// Cat's breed cannot be set once it is known from getBreed //////////
-void Cat::setBreed(Breed newBreed) {
-    if( breed != UNKNOWN_BREED ) {
-        throw logic_error( PROGRAM_NAME ": The breed is already set, you can't change it" ) ;
-    }
-
-    validateBreed( newBreed ) ;
-    Cat::breed = newBreed;
-
-    validation();
 }

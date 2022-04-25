@@ -22,7 +22,9 @@
 class Cat : public Mammal {
 
 
-public:  // Public Member Variables //
+public:  // Public Member Variables ////
+
+    /////////////////// Constructors /////////////////
     explicit Cat(const std::string &newName) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
         if (!validateName(newName)) {
             throw std::out_of_range("Cats must have a name");
@@ -38,7 +40,7 @@ public:  // Public Member Variables //
 
 
 
-public:  //////////////////////////// Constructors /////////////////////////////
+public:
 
     Cat(const std::string &newName,
         const Color newColor,
@@ -87,4 +89,7 @@ public:
     void initializeData();
 
     bool validateWeight(const Weight newWeight);
+
+
+    void setGender(Gender newGender);
 };
