@@ -30,9 +30,9 @@ public:
     static const std::string KINGDOM_NAME;
 
     //////// Public Member Functions ///
-    Animal(const Weight::t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies) ;
+    Animal(Weight::t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies) ;
 
-    Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight, const
+    Animal(Gender newGender, Weight::t_weight newWeight, Weight::t_weight newMaxWeight, const
     std::string &newClassification, const std::string &newSpecies) ;
 
     //// Getters ////
@@ -45,28 +45,25 @@ public:
     Weight::t_weight getWeight() const noexcept ;
 
     //// dump ////
-    void dump() const noexcept override;
+    void dump() const noexcept ;
 
     //// speak ////
     virtual std::string speak() const noexcept=0;
 
     //// validate ////
-    static bool validate() const noexcept override ;
+    bool validate() const noexcept override ;
 
-
-    //// operator > ////
-    virtual bool operator>(const Node &rightSide);
 
 
     //// Static Public Member Functions ////
-    static bool validateClassification(const std::string &checkClassification) noexcept ;
-    static bool validateSpecies(const std::string &checkSpecies ) noexcept;
+    static bool validateClassification(const std::string &checkClassification) noexcept  ;
+    static bool validateSpecies(const std::string &checkSpecies )  noexcept ;
 
     //// Static Public Attributes ////
 
 
 protected: //// Protected Member Functions ////
-    void setGender(const Gender newGender);
+    void setGender(Gender newGender);
 
 
     Node* next = nullptr;

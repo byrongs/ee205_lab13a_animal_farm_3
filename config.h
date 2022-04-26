@@ -11,10 +11,8 @@
 
 #pragma once
 
-#include <iostream>
-
-#include <stdexcept>
 #include <iomanip>
+#include <iostream>
 
 ///////////////////////// Definitions /////////////////////////
 #define PROGRAM_TITLE "Animal Farm 3"
@@ -22,7 +20,8 @@
 #define PROGRAM_NAME  "animal_farm_3"
 
 #define PRINT_HEADING_FOR_DUMP
-std::coutm<<mstd::setw(80) << std::setfill( '=' ) << "" << std::endl
+std::cout << std::setw(80) << std::setfill( '=' ) << "" << std::endl
+
 #define FORMAT_LINE_FOR_DUMP(className, member)
     std::cout << std::setfill( ' ' )
               << std::left
@@ -40,8 +39,8 @@ static void TRACE_OUT( const std::string operation, const std::string functionNa
 #define TRACE_START TRACE_OUT( "Start", __FUNCTION__ ) ;
 #define TRACE_END TRACE_OUT( "End", __FUNCTIOn__ ) ;
 #else
-#define TRACE_START
-#define TRACE_END
+    #define TRACE_START
+    #define TRACE_END
 #endif
 
 

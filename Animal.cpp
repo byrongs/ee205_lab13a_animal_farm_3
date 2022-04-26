@@ -26,23 +26,14 @@ const std::string Animal::KINGDOM_NAME = "Animalia" ;
 ///////////// Constructors /////////////////////////////////////////////////////////////
 Animal::Animal(const Weight::t_weight newMaxWeight, const std::string &newClassification,
                const std::string &newSpecies) : Node(), weight( Weight::POUND, newMaxWeight ) {
-    if (!validateClassification() ) {
-        throw invalid_argument(" Invalid classification");
-    }
     classification = newClassification ;
 }
 
 
 Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight,
                const std::string &newClassification, const std::string &newSpecies) : Node(), weight() {
-    if (!validateClassification() ) {
-        throw invalid_argument( "Invalid classification");
-    }
-    classification = newClassification;
 
-    if (!validateSpecies() ) {
-        throw invalid_argument( "Invalid species");
-    }
+    classification = newClassification;
     species = newSpecies;
 }
 //////////////// Getters /////////////////////////////////////////////////////////////
@@ -75,20 +66,18 @@ void Animal::setGender(const Gender newGender) {
     }
     gender = newGender;
 
-
+}
 //////////////// Booleans //////////////////////////////////////////////
 
-    bool Animal::validate() noexcept {
-        if (!validateClassification()) {
-            return false;
-        }
-        if (!validateSpecies()) {
-            return false
-        }
-
+    bool Animal::validate() const noexcept {
+        assert(validateClassification(getClassification()));
+        assert(validateSpecies(getSpecies()));
+        return true;
     }
 
-    static bool Animal::validateClassification(const std::string &checkClassification) noexcept {
+
+
+    bool Animal::validateClassification(const std::string &checkClassification) noexcept {
         if (checkClassification.empty()) {
             throw invalid_argument(PROGRAM_NAME ":Animal's classification cannot be empty");
             return false;
@@ -97,9 +86,9 @@ void Animal::setGender(const Gender newGender) {
     }
 
 
-    static bool Animal::validateSpecies(const std::string &checkSpecies) noexcept {
+    bool Animal::validateSpecies(const std::string &checkSpecies) noexcept {
         if (checkSpecies.empty()) {
-            throw invalid_agrument(PROGRAM_NAME ":Animal's species cannot be empty");
+            throw invalid_argument(PROGRAM_NAME ":Animal's species cannot be empty");
             return false;
 
         }
@@ -108,12 +97,20 @@ void Animal::setGender(const Gender newGender) {
 
 
 
-//// Operators ////
-    bool Animal::operator>(const Node &rightSide) {
-        return false;
-    }
 
+//// Animal Dump ////
+
+void Animal::dump() const noexcept {
+
+    PRINT_HEADING_FOR_DUMP
+
+    Node::dump();
+
+    FORMAT_LINE_FOR_DUMP("Animal", "this" ) << this << endl;
+    FORMAT_LINE_FOR_DUMP( "Animal", "kingdom" ) << getKingdom() << endl;
+    FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << endl;
+    FORMAT_LINE_FOR_DUMP( "Animal", "species" ) << getSpecies() << endl;
+    FORMAT_LINE_FOR_DUMP( "Animal", "gender" ) << getGender() << endl;
+    FORMAT_LINE_FOR_DUMP( "Animal", "weight" ) << weight << endl;
 
 }
-
-

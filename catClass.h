@@ -75,7 +75,7 @@ public:  ///////////// Public Member Functions //////////////////////////
 
     bool isFixed() const noexcept;
 
-    bool validate() const noexcept override;
+    bool validate() const noexcept ;
 
     static bool validateName(const std::string &newName);
 

@@ -59,7 +59,7 @@ bool Cat::isFixed() const noexcept {
 
 /////////////// Validation method //////////////////////
 bool Cat::validate() const noexcept {
-    Animal::validate();
+
     Mammal::validate();
 
     return true;
