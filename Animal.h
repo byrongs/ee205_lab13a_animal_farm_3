@@ -18,6 +18,7 @@
 #include "Weight.h"
 #include "Node.h"
 #include "Gender.h"
+#include "Mammal.h"
 
 #ifndef EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
 #define EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
@@ -50,7 +51,7 @@ public:
     virtual std::string speak() const noexcept=0;
 
     //// validate ////
-    bool validate() const noexcept override ;
+    static bool validate() const noexcept override ;
 
 
     //// operator > ////

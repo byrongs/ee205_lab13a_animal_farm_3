@@ -73,6 +73,22 @@ Weight::Weight(float newWeight, const Weight::UnitOfWeight newUnitOfWeight, cons
 
 const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
+bool Cat::validateName(const string &newName) {
+    return false;
+}
+
+void Cat::setName(const string &newName) {
+
+}
+
+std::string Cat::GetName() const noexcept {
+    return std::string();
+}
+
+std::string Cat::speak() const noexcept {
+    return std::string();
+}
+
 /// Once UnitOfWeight is set, it can't be changed.
 /// Once maxWeight is set, it can't be changed.
 

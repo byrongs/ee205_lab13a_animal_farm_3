@@ -27,10 +27,12 @@ class Node {
     friend class SinglyLinkedList ;
 
 public: /////// Public Member Functions /////
-    virtual dump() const {
-    FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << std::endl ;
-    FORMAT_LINE_FOR_DUMP( "Node", "next" ) << next << std::endl ;
-}
+    virtual dump() const;
+
+    void Node::dump() const {
+        FORMAT_LINE_FOR_DUMP( "Node", "this") << this << endl ;
+        FORMAT_LINE_FOR_DUMP( "Node", "next") << next << endl ;
+    }
 
     virtual bool validate() const noexcept {
         if( next == nullptr ) {
@@ -53,16 +55,15 @@ public: /////// Public Member Functions /////
 
 protected: ///// Static Protected Member Functions ////
 
+    Node* next = nullptr;
+
     static bool compareByAddress(const Node *node1,const Node *node2) {
         if (node1 > node2) {
             return true;
             return false;
         }
 
-        //// Protected Attributes ////
-
-        Node *next = nullptr;
-
     }
+
 
 };

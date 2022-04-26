@@ -21,7 +21,6 @@
 //////////////////// The Cat Class /////////////////////////////////////
 class Cat : public Mammal {
 
-
 public:  // Public Member Variables ////
 
     /////////////////// Constructors /////////////////
@@ -34,13 +33,13 @@ public:  // Public Member Variables ////
 
         Cat::validate();
     }
-
+public: //// Consts ////
     static const std::string SPECIES_NAME;
     static const Weight::t_weight MAX_WEIGHT;
 
 
 
-public:
+public: ////// Cat Constructor with member variables /////////
 
     Cat(const std::string &newName,
         const Color newColor,
@@ -60,17 +59,17 @@ public:
     void dump() const noexcept override;
 
 ///// fixCat ////////
-    void fixCat() const noexcept;
+    void fixCat() noexcept;
 
 
 ///// Speak ////////
-    std::string speak() const noexcept override ;
+    static std::string speak() const noexcept ;
 
 
 public:  ///////////// Public Member Functions //////////////////////////
 
 
-    std::string GetName() const noexcept;
+    std::string getName() const noexcept;
 
     void setName(const std::string &newName);
 
@@ -85,11 +84,4 @@ protected:
     std::string name;
     bool isCatFixed;
 
-public:
-    void initializeData();
-
-    bool validateWeight(const Weight newWeight);
-
-
-    void setGender(Gender newGender);
 };
