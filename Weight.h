@@ -13,6 +13,7 @@
 #define EE205_LAB_10D_ANIMAL_FARM_2_WEIGHT_H
 
 #endif //EE205_LAB_10D_ANIMAL_FARM_2_WEIGHT_H
+#pragma once
 
 #include <string>
 #include <ostream>
@@ -22,7 +23,7 @@ using namespace std;
 class Weight {
 //////////////////////// Public Types /////////////////////////////
 public:
-    typedef float t_weight;
+    typedef float t_weight; // typedef to replace floats
 
     enum UnitOfWeight {
         POUND, KILO, SLUG
@@ -30,19 +31,21 @@ public:
 
 
     Weight() noexcept; /// a default weight
-    Weight(float newWeight); /// a weight with value
+    Weight(Weight::t_weight newWeight); /// a weight with value
     Weight(UnitOfWeight newUnitOfWeight) noexcept; /// a weight with unit of weight
-    Weight(float newWeight, UnitOfWeight newUnitOfWeight); /// a weight with a value and new unit of weight
-    Weight(float newWeight, float newMaxWeight); /// a weight with value and maximum weight
-    Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight); /// A weight with a UnitOfWeight and a maximum weight
-    Weight(float newWeight, UnitOfWeight newUnitOfWeight,
-           float newMaxWeight); /// A weight with a value, UnitOfWeight and a maximum weight
+    Weight(Weight::t_weight newWeight, UnitOfWeight newUnitOfWeight); /// a weight with a value and new unit of weight
+    Weight(Weight::t_weight newWeight, Weight::t_weight newMaxWeight); /// a weight with value and maximum weight
+    Weight(UnitOfWeight newUnitOfWeight, Weight::t_weight newMaxWeight); /// A weight with a UnitOfWeight and a maximum weight
+    Weight(Weight::t_weight newWeight, UnitOfWeight newUnitOfWeight,
+           Weight::t_weight newMaxWeight); /// A weight with a value, UnitOfWeight and a maximum weight
 
 public:
 
     bool isWeightKnown() const;
 
     bool hasMaxWeight() const;
+
+    void dump() const noexcept;
 
 public: ////////////////// Getters and Setters //////////////////////
 
@@ -54,13 +57,13 @@ public: ////////////////// Getters and Setters //////////////////////
 
     UnitOfWeight getWeightUnit() const noexcept;
 
-    void setWeight(float newWeight);
+    void setWeight(Weight::t_weight newWeight);
 
-    void setWeight(float newWeight, UnitOfWeight weightUnits);
+    void setWeight(Weight::t_weight newWeight, UnitOfWeight weightUnits);
 
-    bool isWeightValid(float checkWeight) const noexcept;
+    bool isWeightValid(Weight::t_weight checkWeight) const noexcept;
 
-    bool validate();
+    bool validate() const noexcept;
 
     void dump() const noexcept;
 
@@ -76,9 +79,9 @@ public:
 
     //////////////////////////// Operators ////////////////////
 
-    std::ostream& operator<<(std::ostream &lhs_stream, const Weight &rhs_Weight) ;
+    std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight) ;
 
-    std::ostream& operator<<(std::ostream& lhs_stream, Weight::UnitOfWeight rhs_UnitOfWeight ) ;
+    std::ostream& operator<<( std::ostream& lhs_stream, Weight::UnitOfWeight rhs_UnitOfWeight ) ;
 
 
 

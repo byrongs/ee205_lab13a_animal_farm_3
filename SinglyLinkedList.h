@@ -23,7 +23,7 @@ class SinglyLinkedList: public List {
 
 public: //// Public Member Functions ////
 
-    SinglyLinkedList();
+    SinglyLinkedList(); // Constructor
 
     void push_front(Node *newNode );
 
