@@ -13,6 +13,7 @@
 
 #include "List.h"
 #include "config.h"
+#include "Node.h"
 
 using namespace std;
 
@@ -21,12 +22,12 @@ unsigned int List::size() const noexcept {
 }
 
 bool List::empty() const noexcept {
-    return (head == nullptr) // for an empty list
+    return (head == nullptr);
 }
 
 bool List::isIn(Node *aNode) const {
     if ( aNode == nullptr ) {
-        throw invalid_argument("aNode must have a value!")
+        throw invalid_argument("aNode must have a value!");
     }
     Node* currentNode = head;
 

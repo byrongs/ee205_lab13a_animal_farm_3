@@ -22,7 +22,8 @@ class Mammal: public Animal {
 
 public: //// Public Member Functions ////
 
-    Mammal(const Weight::t_weight newMaxWeight, const std::string& newSpecies )
+    Mammal(Weight::t_weight newMaxWeight1, const std::string &newClassification, const std::string &newSpecies1,
+           const Weight::t_weight newMaxWeight, const std::string &newSpecies)
      : Animal( newMaxWeight, MAMMAL_NAME, newSpecies ) {} ; //Mammal with minimum fields
 
     Mammal(const Color newColor,const Gender newGender,const Weight::t_weight newWeight,const Weight::t_weight newMaxWeight,

@@ -10,17 +10,15 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 
-
-#ifndef EE205_LAB_10D_ANIMAL_FARM_2_NODE_H
-#define EE205_LAB_10D_ANIMAL_FARM_2_NODE_H
-#endif //EE205_LAB_10D_ANIMAL_FARM_2_NODE_H
-
 #pragma once
+
 
 #include <iostream>
 #include <iomanip>
+
 #include "config.h"
 
+using namespace std;
 
 class Node {
     friend class List ;
@@ -42,6 +40,8 @@ public: /////// Public Member Functions /////
         return true;
     }
 
+    ///// Operator ///////
+
     virtual bool operator>(const Node &rightSide) {
         return compareByAddress(this, &(Node&)rightSide);
     }
@@ -51,10 +51,14 @@ protected: ///// Static Protected Member Functions ////
 
     Node* next = nullptr;
 
+protected:
+
     static bool compareByAddress(const Node *node1,const Node *node2) {
         if(node1 > node2 ) {
             return true;
         }
         return false;
     }
+
+
 };

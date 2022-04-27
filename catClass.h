@@ -24,7 +24,7 @@ class Cat : public Mammal {
 public:  // Public Member Variables ////
 
     /////////////////// Constructors /////////////////
-    explicit Cat(const std::string &newName) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
+    explicit Cat(const std::string &newName) : Mammal(0, <#initializer#>, <#initializer#>, MAX_WEIGHT, SPECIES_NAME) {
         if (!validateName(newName)) {
             throw std::out_of_range("Cats must have a name");
         }

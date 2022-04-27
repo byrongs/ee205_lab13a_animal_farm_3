@@ -11,7 +11,6 @@
 
 #pragma once
 
-
 #include "Node.h"
 
 class List {
@@ -22,15 +21,15 @@ public: ////Public Functiohns ////
 
     unsigned int size() const noexcept;
 
-    bool isIn(Node *aNode) const;
+    bool isIn(Node* aNode) const;
 
     bool isSorted() const noexcept;
 
-    Node *get_first() const noexcept;
+    Node* get_first() const noexcept;
 
     void deleteAllNodes() noexcept;
 
-    virtual Node *pop_front() = 0;
+    virtual Node* pop_front() noexcept = 0;
 
     virtual void dump() const noexcept = 0;
 
@@ -39,7 +38,7 @@ public: ////Public Functiohns ////
 
     //////// Static Public Functions ///////
 
-    static Node *get_next(const Node *currentNode);
+    static Node* get_next(const Node *currentNode);
 
 
 protected: /////// Protected attributes ////////
