@@ -22,23 +22,15 @@
 
 using namespace std;
 
-#define PRINT_HEADING_FOR_DUMP
-    std::cout << std::setw(80) << std::setfill( '=' ) << "" << std::endl
+#define PRINT_HEADING_FOR_DUMP std::cout \
+    << std::setw(80) << std::setfill( '=' ) << "" << std::endl
 
-#define FORMAT_LINE_FOR_DUMP(className, member)
-    std::cout << std::setfill(' ')
-              << std::left
-              << std::boolalpha
-              << std::setw(8) << (className)
-              << std::setw(20) << (member)
-              << std::setw(52)
+#define FORMAT_LINE_FOR_DUMP( className, member) std::cout \
+    << std::setw(8) << (className)                         \
+    << std::setw(20) << (member)                           \
+    << std::setw(52)
 
-#ifdef TRACE
 
-#else
-    #define TRACE_START
-    #define TRACE_END
-#endif
 
 
 

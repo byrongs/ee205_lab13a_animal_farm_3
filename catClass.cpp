@@ -19,6 +19,7 @@
 #include "Weight.h"
 #include "Mammal.h"
 #include "Color.h"
+#include "config.h"
 
 
 using namespace std;
@@ -90,8 +91,8 @@ bool Cat::validate() const noexcept {
         Mammal::dump() ;
 
         FORMAT_LINE_FOR_DUMP( "Cat", "Name" ) << getName() << endl; //for cat's name
-        FORMAT_LINE_FOR_DUMP( "Cat", "isFIxed") << isFixed() << endl; // for cat's fix
+        FORMAT_LINE_FOR_DUMP( "Cat", "isFixed") << isFixed() << endl; // for cat's fix
     }
 
 
-}
+

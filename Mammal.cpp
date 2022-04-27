@@ -15,19 +15,10 @@
 #include "config.h"
 #include "Mammal.h"
 #include "Animal.h"
+
 using namespace std;
 
 static const std::string MAMMAL_NAME = "Mammilian" ;
-
-
-
-
-
-
-
-
-
-
 
 
 

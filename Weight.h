@@ -45,7 +45,6 @@ public:
 
     bool hasMaxWeight() const;
 
-    void dump() const noexcept;
 
 public: ////////////////// Getters and Setters //////////////////////
 
