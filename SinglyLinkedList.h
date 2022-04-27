@@ -9,11 +9,6 @@
 /// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-
-#ifndef EE205_LAB_10D_ANIMAL_FARM_2_SINGLYLINKEDLIST_H
-#define EE205_LAB_10D_ANIMAL_FARM_2_SINGLYLINKEDLIST_H
-#endif //EE205_LAB_10D_ANIMAL_FARM_2_SINGLYLINKEDLIST_H
-
 #pragma once
 
 #include "Node.h"
@@ -25,11 +20,11 @@ public: //// Public Member Functions ////
 
     SinglyLinkedList(); // Constructor
 
-    void push_front(Node *newNode );
+    void push_front(Node* newNode );
 
     Node* pop_front() noexcept override;
 
-    void insert_after (Node *currentNode, Node *newNode );
+    void insert_after (Node* currentNode, Node* newNode );
 
     void dump() const noexcept override;
 

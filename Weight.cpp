@@ -9,9 +9,6 @@
 /// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-
-
-
 #include <iostream>
 #include <stdexcept>
 #include <iomanip>
@@ -82,25 +79,6 @@ const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 /// Once UnitOfWeight is set, it can't be changed.
 /// Once maxWeight is set, it can't be changed.
-
-/////////////// dump /////////////////
-
-void Weight::dump() const noexcept {
-
-#define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
-    cout << setw(80) << setfill('=') << "" << endl;
-    cout << setfill(' ');
-    cout << left;
-    cout << boolalpha;
-
-    FORMAT_LINE( "Weight", "this" )  << this << endl ;
-    FORMAT_LINE("Weight", "isKnown") << isWeightKnown() << endl;
-    FORMAT_LINE("Weight", "weight") << getWeight() << endl;
-    FORMAT_LINE("Weight", "unitOfWeight") << getWeightUnit() << endl;
-    FORMAT_LINE("Weight", "hasMax") << hasMaxWeight() << endl;
-    FORMAT_LINE("Weight", "maxWeight") << getMaxWeight() << endl;
-
-}
 
 
 /////////////////// Weight Conversions //////////////////////
@@ -330,13 +308,21 @@ bool Weight::validate() const noexcept {
 //// Weight dump ////
 
 void Weight::dump() const noexcept {
-    FORMAT_LINE_FOR_DUMP( "Weight", "this") << this << endl ;
-    FORMAT_LINE_FOR_DUMP( "Weight", "isKnown") << bIsKnown << endl;
-    FORMAT_LINE_FOR_DUMP( "Weight", "weight") << weight << endl;
-    FORMAT_LINE_FOR_DUMP( "Weight", "unitOfWeight") << unitOfWeight << endl;
-    FORMAT_LINE_FOR_DUMP( "Weight", "hasMax") << bHasMax << endl;
-    FORMAT_LINE_FOR_DUMP( "Weight", "maxWeight") << maxWeight << endl;
+
+#define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
+    cout << setw(80) << setfill('=') << "" << endl;
+    cout << setfill(' ');
+    cout << left;
+    cout << boolalpha;
+
+    FORMAT_LINE( "Weight", "this" )  << this << endl ;
+    FORMAT_LINE("Weight", "isKnown") << isWeightKnown() << endl;
+    FORMAT_LINE("Weight", "weight") << getWeight() << endl;
+    FORMAT_LINE("Weight", "unitOfWeight") << getWeightUnit() << endl;
+    FORMAT_LINE("Weight", "hasMax") << hasMaxWeight() << endl;
+    FORMAT_LINE("Weight", "maxWeight") << getMaxWeight() << endl;
 
 }
+
 
 

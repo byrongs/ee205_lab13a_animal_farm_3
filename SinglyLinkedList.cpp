@@ -21,13 +21,13 @@
 using namespace std;
 
 SinglyLinkedList::SinglyLinkedList() {
+    assert( SinglyLinkedList::validate() );
 
 }
 //////////////////// Push Front /////////////
 void SinglyLinkedList::push_front(Node *newNode) {
-    TRACE_START
 
-    if(*newNode == nullptr){
+    if( newNode == nullptr){
         throw invalid_argument(" newNode cannot be nullpter ");
     }
 
@@ -43,7 +43,6 @@ void SinglyLinkedList::push_front(Node *newNode) {
 }
 ////// Pop Front ////////////////////////////
 Node *SinglyLinkedList::pop_front() noexcept {
-    TRACE_START
 
     if( head == nullptr ){
         return nullptr;
@@ -56,19 +55,15 @@ Node *SinglyLinkedList::pop_front() noexcept {
     } else {
         head = nullptr;
     }
-
     returnValue->next = nullptr;
-
     count--;
-    TRACE_END
 
-    return returnValue;
+    return returnValue ;
 
 }
 //////////////// insert after //////////////
 
 void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
-    TRACE_START
 
     if (head == nullptr)
         throw logic_error("Insert_after won't work with empty list!");
@@ -89,8 +84,8 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
         throw logic_error(" The newNode is already in list!");
     }
 
-newNode->next = currentNode->next;
-currentNode->next = newNode;
+    newNode->next = currentNode->next;
+    currentNode->next = newNode;
 
 
 void SinglyLinkedList::dump() const noexcept {
