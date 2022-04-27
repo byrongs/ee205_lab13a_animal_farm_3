@@ -66,7 +66,6 @@ bool Cat::validate() const noexcept {
 }
 
 
-
 ///////// Name Validation ////////////////
     bool Cat::validateName(const std::string &newName) {
         if (newName.empty()) {

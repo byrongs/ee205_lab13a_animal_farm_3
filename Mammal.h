@@ -17,14 +17,16 @@
 #include "Animal.h"
 #include "Color.h"
 
-class Mammal: {
+class Mammal: public Animal {
+    friend class Animal ;
 
 public: //// Public Member Functions ////
 
-    Mammal(const Weight::t_weight newMaxWeight, const std::string &newSpecies ) : (newMaxWeight, newSpecies);
+    Mammal(const Weight::t_weight newMaxWeight, const std::string& newSpecies )
+     : Animal( newMaxWeight, MAMMAL_NAME, newSpecies ) {} ; //Mammal with minimum fields
 
     Mammal(const Color newColor,const Gender newGender,const Weight::t_weight newWeight,const Weight::t_weight newMaxWeight,
-           const std::string &newSpecies ) : ( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {
+           const std::string &newSpecies ) : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {
         setColor( newColor );
     }; // Mammal with maximum fields
 
@@ -35,7 +37,7 @@ public: //// Public Member Functions ////
 
     //// dump ////
 
-    void dump() const noexcept ;
+    void dump() const noexcept override ;
 
     //// Static Public Attributes ////
     static const std::string MAMMAL_NAME;

@@ -116,3 +116,7 @@ void Animal::dump() const noexcept {
     FORMAT_LINE_FOR_DUMP( "Animal", "weight" ) << weight << endl;
 
 }
+
+void Animal::setWeight(const Weight::t_weight newWeight) {
+    weight = newWeight;
+}

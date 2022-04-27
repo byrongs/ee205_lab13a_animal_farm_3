@@ -27,9 +27,9 @@ class Node {
     friend class SinglyLinkedList ;
 
 public: /////// Public Member Functions /////
-    virtual dump() const {
-        FORMAT_LINE_FOR_DUMP("Node", "this") << this << endl;
-        FORMAT_LINE_FOR_DUMP("Node", "next") << next << endl;
+    virtual void dump() const {
+        FORMAT_LINE_FOR_DUMP("Node", "this") << this << std::endl;
+        FORMAT_LINE_FOR_DUMP("Node", "next") << next << std::endl;
     }
 
     virtual bool validate() const noexcept {
@@ -37,8 +37,7 @@ public: /////// Public Member Functions /////
             return true;
         }
         if( next ==next-> next ) {
-            cout <<"Recursive pointing loop detected";
-            return false;
+            throw std::invalid_argument("Recursive pointing loop detected");
         }
         return true;
     }
@@ -58,6 +57,4 @@ protected: ///// Static Protected Member Functions ////
         }
         return false;
     }
-
-
 };

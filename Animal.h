@@ -14,15 +14,12 @@
 #pragma once
 
 #include <string>
+
 #include "config.h"
 #include "Weight.h"
 #include "Node.h"
 #include "Gender.h"
-#include "Mammal.h"
 
-#ifndef EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
-#define EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
-#endif //EE205_LAB_10D_ANIMAL_FARM_2_ANIMAL_H
 
 ////////// Animal Class /////////////////
 class Animal: public Node {
@@ -43,9 +40,10 @@ public:
     Gender getGender() const noexcept ;
 
     Weight::t_weight getWeight() const noexcept ;
+    void setWeight(const Weight::t_weight newWeight );
 
-    //// dump ////
-    void dump() const noexcept ;
+    //// dump /////
+    void dump() const noexcept override ;
 
     //// speak ////
     virtual std::string speak() const noexcept=0;

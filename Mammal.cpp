@@ -26,3 +26,7 @@ void Mammal::dump() const noexcept {
     FORMAT_LINE_FOR_DUMP( "Mammal", "Color" ) << color << endl;
 }
 
+Mammal::Mammal(const Weight::t_weight newMaxWeight, const string &newSpecies) {
+
+}
+
