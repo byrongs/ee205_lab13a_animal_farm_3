@@ -15,9 +15,11 @@
 #include <iostream>
 #include <stdexcept>
 #include <iomanip>
+#include <string>
 
 #include "Animal.h"
 #include "config.h"
+#include "Node.h"
 
 using namespace std;
 

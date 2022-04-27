@@ -18,7 +18,7 @@
 #pragma once
 
 #include <iostream>
-
+#include <iomanip>
 #include "config.h"
 
 
@@ -27,17 +27,37 @@ class Node {
     friend class SinglyLinkedList ;
 
 public: /////// Public Member Functions /////
-    virtual dump() const;
+    virtual dump() const {
+        FORMAT_LINE_FOR_DUMP("Node", "this") << this << endl;
+        FORMAT_LINE_FOR_DUMP("Node", "next") << next << endl;
+    }
 
-    virtual bool validate() const noexcept ;
+    virtual bool validate() const noexcept {
+        if( next == nullptr ) {
+            return true;
+        }
+        if( next ==next-> next ) {
+            cout <<"Recursive pointing loop detected";
+            return false;
+        }
+        return true;
+    }
 
-    virtual bool operator>(const Node &rightSide) ;
+    virtual bool operator>(const Node &rightSide) {
+        return compareByAddress(this, &(Node&)rightSide);
+    }
+
 
 protected: ///// Static Protected Member Functions ////
 
     Node* next = nullptr;
 
-    static bool compareByAddress(const Node *node1,const Node *node2) ;
+    static bool compareByAddress(const Node *node1,const Node *node2) {
+        if(node1 > node2 ) {
+            return true;
+        }
+        return false;
+    }
 
 
 };
