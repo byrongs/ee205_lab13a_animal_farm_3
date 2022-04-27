@@ -26,9 +26,9 @@ using namespace std;
 
 ///////////////////////////// Cat consts /////////////////////////////////////////////////
 
-static const Weight::t_weight MAX_WEIGHT = 40;
+const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
-static const std::string SPECIES_NAME = "Felis Catus" ;
+const string Cat::SPECIES_NAME = "Felis Catus" ;
 
 
 

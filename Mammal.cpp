@@ -11,6 +11,8 @@
 
 #include <string>
 #include <cassert>
+#include <iomanip>
+#include <iostream>
 
 #include "config.h"
 #include "Mammal.h"
@@ -18,7 +20,7 @@
 
 using namespace std;
 
-static const std::string MAMMAL_NAME = "Mammilian" ;
+const string Mammal::MAMMAL_NAME = "Mammalian" ;
 
 
 
