@@ -12,13 +12,15 @@
 #pragma once
 
 #include <iomanip>
-
+#include <iostream>
+#include <stdexcept>
 
 ///////////////////////// Definitions /////////////////////////
 #define PROGRAM_TITLE "Animal Farm 3"
 
 #define PROGRAM_NAME  "animal_farm_3"
 
+using namespace std;
 
 #define PRINT_HEADING_FOR_DUMP
     std::cout << std::setw(80) << std::setfill( '=' ) << "" << std::endl

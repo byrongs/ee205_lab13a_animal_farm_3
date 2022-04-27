@@ -10,12 +10,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 
-
-
-#ifndef EE205_LAB_10D_ANIMAL_FARM_2_COLOR_H
-#define EE205_LAB_10D_ANIMAL_FARM_2_COLOR_H
-#endif //EE205_LAB_10D_ANIMAL_FARM_2_COLOR_H
-
 #include <iostream>
 #include <string>
 

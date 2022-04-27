@@ -10,13 +10,15 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+#include <string>
+
 #include "config.h"
 #include "Mammal.h"
 #include "catClass.h"
 #include "Gender.h"
 #include "Weight.h"
 #include "Animal.h"
-
+#include "Color.h"
 
 //////////////////// The Cat Class /////////////////////////////////////
 class Cat : public Mammal {
@@ -24,9 +26,9 @@ class Cat : public Mammal {
 public:  // Public Member Variables ////
 
     /////////////////// Constructors /////////////////
-    explicit Cat(const std::string &newName) : Mammal(0, <#initializer#>, <#initializer#>, MAX_WEIGHT, SPECIES_NAME) {
+    explicit Cat(const std::string& newName) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
         if (!validateName(newName)) {
-            throw std::out_of_range("Cats must have a name");
+            throw std::out_of_range("All cats must have a name");
         }
         name = newName;
         isCatFixed = false;
@@ -36,7 +38,6 @@ public:  // Public Member Variables ////
 public: //// Consts ////
     static const std::string SPECIES_NAME;
     static const Weight::t_weight MAX_WEIGHT;
-
 
 
 public: ////// Cat Constructor with member variables /////////
@@ -63,7 +64,7 @@ public: ////// Cat Constructor with member variables /////////
 
 
 ///// Speak ////////
-    static std::string speak() const noexcept ;
+    std::string speak() const noexcept override ;
 
 
 public:  ///////////// Public Member Functions //////////////////////////
@@ -75,7 +76,7 @@ public:  ///////////// Public Member Functions //////////////////////////
 
     bool isFixed() const noexcept;
 
-    bool validate() const noexcept ;
+    bool validate() const noexcept override ;
 
     static bool validateName(const std::string &newName);
 
