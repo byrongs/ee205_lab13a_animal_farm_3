@@ -72,8 +72,6 @@ Weight::Weight(const Weight::t_weight newWeight, const Weight::UnitOfWeight newU
     setMaxWeight(newMaxWeight);
 }
 
-const Weight::t_weight Cat::MAX_WEIGHT = 40;
-
 
 
 
