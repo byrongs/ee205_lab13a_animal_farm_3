@@ -35,7 +35,7 @@ public: /////// Public Member Functions /////
             return true;
         }
         if( next ==next-> next ) {
-            throw std::invalid_argument("Recursive pointing loop detected");
+            cout << "Recursive pointing loop detected" ;
         }
         return true;
     }

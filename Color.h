@@ -8,7 +8,7 @@
 /// @author @Byron Soriano <@byrongs@hawaii.edu>
 /// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
+#pragma once
 
 #include <iostream>
 #include <string>

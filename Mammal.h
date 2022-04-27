@@ -8,11 +8,7 @@
 /// @author @Byron Soriano <@byrongs@hawaii.edu>
 /// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
-
-#ifndef EE205_LAB_10D_ANIMAL_FARM_2_MAMMAL_H
-#define EE205_LAB_10D_ANIMAL_FARM_2_MAMMAL_H
-#endif //EE205_LAB_10D_ANIMAL_FARM_2_MAMMAL_H
+#pragma once
 
 #include "Animal.h"
 #include "Color.h"

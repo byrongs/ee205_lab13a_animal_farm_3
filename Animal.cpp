@@ -81,7 +81,7 @@ void Animal::setGender(const Gender newGender) {
 
     bool Animal::validateClassification(const std::string &checkClassification) noexcept {
         if (checkClassification.empty()) {
-            throw invalid_argument(PROGRAM_NAME ":Animal's classification cannot be empty");
+            cout << PROGRAM_NAME << ":Animal's classification cannot be empty" << endl;
             return false;
         }
         return true;
@@ -90,7 +90,7 @@ void Animal::setGender(const Gender newGender) {
 
     bool Animal::validateSpecies(const std::string &checkSpecies) noexcept {
         if (checkSpecies.empty()) {
-            throw invalid_argument(PROGRAM_NAME ":Animal's species cannot be empty");
+            cout << PROGRAM_NAME << ":Animal's species cannot be empty" << endl;
             return false;
 
         }
@@ -104,7 +104,7 @@ void Animal::setGender(const Gender newGender) {
 
 void Animal::dump() const noexcept {
 
-    PRINT_HEADING_FOR_DUMP
+    PRINT_HEADING_FOR_DUMP;
 
     Node::dump();
 

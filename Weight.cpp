@@ -223,7 +223,7 @@ Weight& Weight::operator+=( const Weight::t_weight rhs_addToWeight ) {
 
 
 ///////////////////// Ostream ///////////////////////
-std::ostream &Weight::operator<<(ostream &lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight) {
+ostream& operator<<(ostream &lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight) {
     switch( rhs_UnitOfWeight ) {
         case Weight::POUND:
             return lhs_stream << Weight::POUND_LABEL ;
@@ -294,7 +294,7 @@ void Weight::setMaxWeight(const Weight::t_weight newMaxWeight) {
 
 bool Weight::validate() const noexcept {
     if (weight <= 0) {
-        throw invalid_argument("The weight must be greater than 0");
+        cout << "The weight must be greater than 0" << endl;
     }
     if( !isWeightValid((maxWeight))) {
         cout << "Max weight is <= 0" << endl;

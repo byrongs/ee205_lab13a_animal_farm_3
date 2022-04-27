@@ -64,7 +64,7 @@ public: ////////////////// Getters and Setters //////////////////////
 
     bool validate() const noexcept;
 
-    void dump() const noexcept override;
+    void dump() const noexcept ;
 
 
     ///////////////////// Overrides //////////////////////////////
@@ -75,12 +75,6 @@ public:
     bool operator<(const Weight &rhs_Weight) const;
 
     Weight &operator+=(float rhs_addToWeight);
-
-    //////////////////////////// Operators ////////////////////
-
-    std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight) ;
-
-    std::ostream& operator<<( std::ostream& lhs_stream, Weight::UnitOfWeight rhs_UnitOfWeight ) ;
 
 
 
@@ -122,7 +116,12 @@ private: //////////// Private Attributes //////////////////////////
 
 };
 
+//////////////////////////// Operators ////////////////////
 
+
+std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight) ;
+
+std::ostream& operator<<( std::ostream& lhs_stream, Weight::UnitOfWeight rhs_UnitOfWeight ) ;
 
 
 
