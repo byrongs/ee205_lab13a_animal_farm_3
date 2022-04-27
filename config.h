@@ -22,6 +22,21 @@
 
 using namespace std;
 
+
+#ifdef TRACE
+    static void TRACE_OUT( const string operation, const string functionName ) {
+        cout << PROGRAM_NAME << operation << " " << functionName << endl;
+
+    }
+
+#define TRACE_START TRACE_OUT("START", __FUNCTION__);
+#define TRACE_END TRACE_OUT("END", __FUNCTION__);
+
+#else
+#define TRACE_START
+#define TRACE_END
+#endif
+
 #define PRINT_HEADING_FOR_DUMP std::cout \
     << std::setw(80) << std::setfill( '=' ) << "" << std::endl
 
@@ -29,6 +44,7 @@ using namespace std;
     << std::setw(8) << (className)                         \
     << std::setw(20) << (member)                           \
     << std::setw(52)
+
 
 
 

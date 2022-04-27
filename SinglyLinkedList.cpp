@@ -23,6 +23,7 @@ SinglyLinkedList::SinglyLinkedList() {
 }
 //////////////////// Push Front /////////////
 void SinglyLinkedList::push_front(Node *newNode) {
+    TRACE_START
 
     if( newNode == nullptr){
         throw invalid_argument(" newNode cannot be nullpter ");
@@ -37,9 +38,12 @@ void SinglyLinkedList::push_front(Node *newNode) {
     head = newNode;
     newNode->dump();
 
+    TRACE_END;
+
 }
 ////// Pop Front ////////////////////////////
 Node *SinglyLinkedList::pop_front() noexcept {
+    TRACE_START
 
     if( head == nullptr ) {
         return nullptr;
@@ -55,12 +59,15 @@ Node *SinglyLinkedList::pop_front() noexcept {
     returnValue->next = nullptr;
     count--;
 
+    TRACE_END
+
     return returnValue ;
 
 }
 //////////////// insert after //////////////
 
 void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
+    TRACE_START
 
     if (head == nullptr) {
         throw logic_error("Insert_after won't work with empty list!");
@@ -83,6 +90,9 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
 
     newNode->next = currentNode->next;
     currentNode->next = newNode;
+    count++;
+
+    TRACE_END
 }
 
     void SinglyLinkedList::dump() const noexcept {
